@@ -24,6 +24,16 @@
         {
         }
 
+        public DbSet<Company> Companies { get; set; }
+
+        public DbSet<FiscalPrinter> FiscalPrinters { get; set; }
+
+        public DbSet<PetrolStation> PetrolStations { get; set; }
+
+        public DbSet<SimCard> SimCards { get; set; }
+
+        public DbSet<Tank> Tanks { get; set; }
+
         public DbSet<Setting> Settings { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);

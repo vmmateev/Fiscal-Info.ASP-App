@@ -33,5 +33,9 @@ namespace FiscalInfoApp.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        //TODO add petrolstation collection before or after scaffold
+
+        //TODO Добави ServiceOrganization & Name след Scaffold
     }
 }

@@ -1,9 +1,8 @@
 ﻿namespace FiscalInfoApp.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using FiscalInfoApp.Data.Models;
     using FiscalInfoApp.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

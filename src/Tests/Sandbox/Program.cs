@@ -5,6 +5,7 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    using CommandLine;
     using FiscalInfoApp.Data;
     using FiscalInfoApp.Data.Common;
     using FiscalInfoApp.Data.Common.Repositories;
@@ -13,9 +14,6 @@
     using FiscalInfoApp.Data.Seeding;
     using FiscalInfoApp.Services.Data;
     using FiscalInfoApp.Services.Messaging;
-
-    using CommandLine;
-
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
