@@ -10,11 +10,11 @@
 
         public string MemoryNumber { get; set; }
 
+        public string Fdrid { get; set; }
+
         [ForeignKey(nameof(SimCard))]
-        public string SimCardId { get; set; }
+        public int SimCardId { get; set; }
 
         public SimCard SimCard { get; set; }
-
-        public string Fdrid { get; set; }
     }
 }
