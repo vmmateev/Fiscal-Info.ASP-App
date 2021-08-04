@@ -12,7 +12,6 @@
 
         public string OperatorName { get; set; }
 
-        [ForeignKey(nameof(FiscalPrinter))]
         public int FiscalPrinterId { get; set; }
 
         public FiscalPrinter FiscalPrinter { get; set; }
