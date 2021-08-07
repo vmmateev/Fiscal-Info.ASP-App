@@ -11,6 +11,6 @@
         [ForeignKey(nameof(PetrolStation))]
         public int PetrolStationId { get; set; }
 
-        public PetrolStation PetrolStation { get; set; }
+        public virtual PetrolStation PetrolStation { get; set; }
     }
 }

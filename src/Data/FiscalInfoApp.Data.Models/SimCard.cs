@@ -14,6 +14,6 @@
 
         public int FiscalPrinterId { get; set; }
 
-        public FiscalPrinter FiscalPrinter { get; set; }
+        public virtual FiscalPrinter FiscalPrinter { get; set; }
     }
 }

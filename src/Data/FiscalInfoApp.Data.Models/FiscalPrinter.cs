@@ -12,9 +12,13 @@
 
         public string Fdrid { get; set; }
 
+        public int PetrolStationId { get; set; }
+
+        public virtual PetrolStation PetrolStation { get; set; }
+
         [ForeignKey(nameof(SimCard))]
         public int SimCardId { get; set; }
 
-        public SimCard SimCard { get; set; }
+        public virtual SimCard SimCard { get; set; }
     }
 }

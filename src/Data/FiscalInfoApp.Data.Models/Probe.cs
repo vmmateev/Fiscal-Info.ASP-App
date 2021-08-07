@@ -15,6 +15,6 @@
         [ForeignKey(nameof(OilLevel))]
         public int OilLevelId { get; set; }
 
-        public OilLevel OilLevel { get; set; }
+        public virtual OilLevel OilLevel { get; set; }
     }
 }
