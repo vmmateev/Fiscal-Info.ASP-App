@@ -24,15 +24,25 @@
         {
         }
 
+        public DbSet<CommController> CommControllers { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
         public DbSet<Company> Companies { get; set; }
 
         public DbSet<FiscalPrinter> FiscalPrinters { get; set; }
 
+        public DbSet<FuelDispenser> FuelDispensers { get; set; }
+
         public DbSet<PetrolStation> PetrolStations { get; set; }
 
-        public DbSet<SimCard> SimCards { get; set; }
-
         public DbSet<FuelTank> FuelTanks { get; set; }
+
+        public DbSet<OilLevel> OilLevels { get; set; }
+
+        public DbSet<Probe> Probes { get; set; }
+
+        public DbSet<SimCard> SimCards { get; set; }
 
         public DbSet<Setting> Settings { get; set; }
 
