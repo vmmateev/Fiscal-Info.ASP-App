@@ -18,7 +18,6 @@
 
         public virtual ICollection<Probe> Probes { get; set; }
 
-        [ForeignKey(nameof(PetrolStation))]
         public int PetrolStationId { get; set; }
 
         public PetrolStation PetrolStation { get; set; }
