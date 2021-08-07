@@ -32,7 +32,7 @@
 
         public DbSet<SimCard> SimCards { get; set; }
 
-        public DbSet<Tank> Tanks { get; set; }
+        public DbSet<FuelTank> FuelTanks { get; set; }
 
         public DbSet<Setting> Settings { get; set; }
 

@@ -2,11 +2,10 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     using FiscalInfoApp.Data.Common.Models;
 
-    public class Company : BaseModel<int>
+    public class Company : BaseDeletableModel<int>
     {
         public Company()
         {
@@ -20,11 +19,11 @@
 
         public string Street { get; set; }
 
-        public virtual ICollection<PetrolStation> PetrolStations { get; set; }
-
         [DefaultValue(false)]
         public bool IsServiceOrganization { get; set; }
 
-        public ICollection<ApplicationUser> ServiceUsers { get; set; }
+        public virtual ICollection<PetrolStation> PetrolStations { get; set; }
+
+        public virtual ICollection<ApplicationUser> ServiceUsers { get; set; }
     }
 }

@@ -5,7 +5,7 @@
 
     using FiscalInfoApp.Data.Common.Models;
 
-    public class Tank : BaseDeletableModel<int>
+    public class FuelTank : BaseDeletableModel<int>
     {
         public int TankNumber { get; set; }
 

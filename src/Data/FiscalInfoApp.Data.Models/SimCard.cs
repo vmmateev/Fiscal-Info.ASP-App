@@ -6,9 +6,9 @@
 
     public class SimCard : BaseDeletableModel<int>
     {
-        public int Imsi { get; set; }
+        public string Imsi { get; set; }
 
-        public int GsmNumber { get; set; }
+        public string GsmNumber { get; set; }
 
         public string OperatorName { get; set; }
 
