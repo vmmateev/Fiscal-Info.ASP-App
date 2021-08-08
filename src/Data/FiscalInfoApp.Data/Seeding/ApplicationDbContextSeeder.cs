@@ -32,6 +32,7 @@
                               new FiscalprinterSeeder(),
                               new OillevelSeeder(),
                               new PetrolstationSeeder(),
+                              new FueldispenserSeeder(),
                           };
 
             foreach (var seeder in seeders)
