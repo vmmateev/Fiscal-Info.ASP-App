@@ -30,7 +30,8 @@
                               new CompaniesSeeder(),
                               new SimcardSeeder(),
                               new FiscalprinterSeeder(),
-                              /*new PetrolstationSeeder(),*/
+                              new OillevelSeeder(),
+                              new PetrolstationSeeder(),
                           };
 
             foreach (var seeder in seeders)
