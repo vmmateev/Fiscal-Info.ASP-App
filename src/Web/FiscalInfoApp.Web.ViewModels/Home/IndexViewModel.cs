@@ -4,6 +4,8 @@
     {
         public int CompaniesCount { get; set; }
 
+        public int ServiceOrganization { get; set; }
+
         public int PetrolStationsCount { get; set; }
     }
 }

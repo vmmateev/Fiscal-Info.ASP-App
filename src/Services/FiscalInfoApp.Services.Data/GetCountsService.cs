@@ -23,7 +23,8 @@
         {
             var data = new IndexViewModel
             {
-                CompaniesCount = this.companiesRepository.All().Count(),
+                CompaniesCount = this.companiesRepository.All().Where(c => c.IsServiceOrganization == false).Count(),
+                ServiceOrganization = this.companiesRepository.All().Where(c => c.IsServiceOrganization == true).Count(),
                 PetrolStationsCount = this.petrolstationRepository.All().Count(),
             };
 
