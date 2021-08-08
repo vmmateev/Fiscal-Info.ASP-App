@@ -28,6 +28,8 @@
                               new RolesSeeder(),
                               new SettingsSeeder(),
                               new CompaniesSeeder(),
+                              new SimcardSeeder(),
+                              /*new PetrolstationSeeder(),*/
                           };
 
             foreach (var seeder in seeders)
