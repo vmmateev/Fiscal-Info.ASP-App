@@ -1,9 +1,12 @@
 ﻿namespace FiscalInfoApp.Data.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     using FiscalInfoApp.Data.Common.Models;
+
+    using static FiscalInfoApp.Common.DataConstants.PetrolStationConstants;
 
     public class PetrolStation : BaseDeletableModel<int>
     {
@@ -15,10 +18,16 @@
             this.Comments = new HashSet<Comment>();
         }
 
+        [Required]
+        [MaxLength(NameMaxLength)]
         public string Name { get; set; }
 
+        [Required]
+        [MaxLength(CityMaxLength)]
         public string City { get; set; }
 
+        [Required]
+        [MaxLength(StreetMaxLength)]
         public string Street { get; set; }
 
         public virtual ICollection<FuelDispenser> FuelDispensers { get; set; }

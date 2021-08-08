@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\FiscalInfoApp.Common\FiscalInfoApp.Common.csproj" />
     <ProjectReference Include="..\FiscalInfoApp.Data.Common\FiscalInfoApp.Data.Common.csproj" />
   </ItemGroup>
   

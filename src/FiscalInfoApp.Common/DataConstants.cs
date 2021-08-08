@@ -44,6 +44,9 @@
 
         public static class FuelDispenserConstants
         {
+            public const int FuelDispenserNumberMin = 1;
+            public const int FuelDispenserNumberMax = 20;
+
             public const int BrandMinLength = 1;
             public const int BrandMaxLength = 20;
 
