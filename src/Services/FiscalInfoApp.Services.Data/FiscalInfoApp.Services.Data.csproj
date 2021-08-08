@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\FiscalInfoApp.Data.Common\FiscalInfoApp.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\FiscalInfoApp.Data.Models\FiscalInfoApp.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\FiscalInfoApp.Web.ViewModels\FiscalInfoApp.Web.ViewModels.csproj" />
     <ProjectReference Include="..\FiscalInfoApp.Services.Mapping\FiscalInfoApp.Services.Mapping.csproj" />
   </ItemGroup>
 

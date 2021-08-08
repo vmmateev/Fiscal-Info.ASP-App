@@ -1,9 +1,16 @@
 ﻿@using FiscalInfoApp.Common
+@model FiscalInfoApp.Web.ViewModels.Home.IndexViewModel
 @{
     this.ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="col-md-4 offset-md-4">
+        <p>We currently have:</p>
+        <ul class="list-group">
+            <li class="list-group bg-primary">Registered Companies: @Model.CompaniesCount</li>
+            <li class="list-group bg-info">Registered petrol stations arround the country: @Model.PetrolStationsCount</li>
+        </ul>
+    </div>
 </div>
