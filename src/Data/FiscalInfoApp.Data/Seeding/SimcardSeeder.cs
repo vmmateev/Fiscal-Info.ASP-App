@@ -29,6 +29,13 @@
                 OperatorName = "Telenor",
             });
 
+            await dbContext.SimCards.AddAsync(new SimCard //Hadjiqta Talev
+            {
+                Imsi = "284050030151038",
+                GsmNumber = "359892696804",
+                OperatorName = "Telenor",
+            });
+
             await dbContext.SimCards.AddAsync(new SimCard //Hadjiqta landos
             {
                 Imsi = "284050030156441",
@@ -36,12 +43,6 @@
                 OperatorName = "Telenor",
             });
 
-            await dbContext.SimCards.AddAsync(new SimCard //Hadjiqta Talev
-            {
-                Imsi = "284050030151038",
-                GsmNumber = "359892696804",
-                OperatorName = "Telenor",
-            });
 
             await dbContext.SimCards.AddAsync(new SimCard //stil96 mora
             {

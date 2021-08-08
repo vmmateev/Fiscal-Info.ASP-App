@@ -29,6 +29,7 @@
                               new SettingsSeeder(),
                               new CompaniesSeeder(),
                               new SimcardSeeder(),
+                              new FiscalprinterSeeder(),
                               /*new PetrolstationSeeder(),*/
                           };
 
