@@ -47,5 +47,10 @@
         public int OilLevelId { get; set; }
 
         public virtual OilLevel OilLevel { get; set; }
+
+        [ForeignKey(nameof(Company))]
+        public int CompanyId { get; set; }
+
+        public Company Company { get; set; }
     }
 }
