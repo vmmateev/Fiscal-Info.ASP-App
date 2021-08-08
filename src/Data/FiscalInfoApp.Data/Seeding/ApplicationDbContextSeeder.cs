@@ -33,6 +33,7 @@
                               new OillevelSeeder(),
                               new PetrolstationSeeder(),
                               new FueldispenserSeeder(),
+                              new FueltankSeeder(),
                           };
 
             foreach (var seeder in seeders)
