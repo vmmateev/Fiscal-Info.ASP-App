@@ -21,6 +21,9 @@
         [MaxLength(FloatFuelTypeMaxLength)]
         public string FloatFuelType { get; set; }
 
+        [Required]
+        public int TankNumber { get; set; }
+
         [ForeignKey(nameof(OilLevel))]
         public int OilLevelId { get; set; }
 
