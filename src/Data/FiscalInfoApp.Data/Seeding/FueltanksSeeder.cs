@@ -6,7 +6,7 @@
 
     using FiscalInfoApp.Data.Models;
 
-    public class FueltankSeeder : ISeeder
+    public class FueltanksSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FiscalInfoApp.Data.Seeding
 {
-    public class FiscalprinterSeeder : ISeeder
+    public class FiscalprintersSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
