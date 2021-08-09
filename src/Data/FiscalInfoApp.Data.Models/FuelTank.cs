@@ -19,7 +19,7 @@
         public double FullVolume { get; set; }
 
         [Required]
-        [Range(DiameterMinCm, DiameterMaxCm)]
+        [Range(DiameterMinMm, DiameterMaxMm)]
         public double Diameter { get; set; }
 
         [Required]

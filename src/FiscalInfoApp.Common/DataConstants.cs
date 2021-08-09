@@ -66,10 +66,10 @@
             public const int TankMaxNumber = 10;
 
             public const double FullVolumeMin = 1000;
-            public const double FullVolumeMax = 60_000;
+            public const double FullVolumeMax = 70_000;
 
-            public const double DiameterMinCm = 100;
-            public const double DiameterMaxCm = 1000;
+            public const double DiameterMinMm = 1000;
+            public const double DiameterMaxMm = 5000;
 
             public const int FuelTypeMinLength = 3;
             public const int FuelTypeMaxLength = 20;
@@ -86,23 +86,23 @@
 
         public static class ProbeConstants
         {
-            public const double ProbeMinLengthCm = 100;
-            public const double ProbeMaxLengthCm = 500;
+            public const double ProbeMinLengthMeters = 1;
+            public const double ProbeMaxLengthMeters = 10;
 
             public const int FloatSizeMinMm = 50;
             public const int FloatSizeMaxMm = 110;
 
             public const int FloatFuelTypeMinLength = 3;
-            public const int FloatFuelTypeMaxLength = 10;
+            public const int FloatFuelTypeMaxLength = 15;
         }
 
         public static class CommControllerConstants
         {
             public const int CommTypeMinLength = 1;
-            public const int CommTypeMaxLength = 10;
+            public const int CommTypeMaxLength = 20;
 
             public const int BoxColorMinLength = 1;
-            public const int BoxColorMaxLength = 10;
+            public const int BoxColorMaxLength = 20;
         }
 
         public static class CommentConstants

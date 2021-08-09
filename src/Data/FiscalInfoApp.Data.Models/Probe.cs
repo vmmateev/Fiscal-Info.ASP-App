@@ -10,7 +10,7 @@
     public class Probe : BaseDeletableModel<int>
     {
         [Required]
-        [Range(ProbeMinLengthCm,ProbeMaxLengthCm)]
+        [Range(ProbeMinLengthMeters, ProbeMaxLengthMeters)]
         public double ProbeLength { get; set; }
 
         [Required]

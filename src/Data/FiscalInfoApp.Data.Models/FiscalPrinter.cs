@@ -10,14 +10,14 @@
     public class FiscalPrinter : BaseDeletableModel<int>
     {
         [Required]
-        [StringLength(OsNumberLength)]
+        [MaxLength(OsNumberLength)]
         public string OsNumber { get; set; }
 
         [Required]
-        [StringLength(MemotyNumberLength)]
+        [MaxLength(MemotyNumberLength)]
         public string MemoryNumber { get; set; }
 
-        [StringLength(FdridLength)]
+        [MaxLength(FdridLength)]
         public string Fdrid { get; set; }
 
         public int PetrolStationId { get; set; }

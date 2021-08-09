@@ -10,7 +10,6 @@
     public class FuelDispenser : BaseDeletableModel<int>
     {
         [Range(FuelDispenserNumberMin,FuelDispenserNumberMax)]
-        //TODO nullable or not ?
         public int DispenserNumber { get; set; }
 
         [MaxLength(BrandMaxLength)]
