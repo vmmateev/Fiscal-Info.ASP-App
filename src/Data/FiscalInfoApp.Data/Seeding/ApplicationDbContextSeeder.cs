@@ -35,6 +35,7 @@
                               new FueldispenserSeeder(),
                               new FueltankSeeder(),
                               new ProbesSeeder(),
+                              new CommControllersSeeder(),
                           };
 
             foreach (var seeder in seeders)
