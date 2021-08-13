@@ -10,7 +10,7 @@
     {
         private readonly IGetCountsService countsService;
 
-        //TODO Ako polzvame bez soft deletion za repo IReposotory
+        // TODO Ako polzvame bez soft deletion za repo IReposotory
         public HomeController(IGetCountsService countsService)
         {
             this.countsService = countsService;

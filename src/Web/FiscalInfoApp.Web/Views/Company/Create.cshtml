@@ -23,14 +23,14 @@
             <input asp-for="Street" class="form-control" />
             <span asp-validation-for="Street" class="text-danger"></span>
         </div>
-
+        // TODO When is check send True and False in Create Post form ?
         <div class="form-check">
-            <input asp-for="IsServiceOrganization" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input asp-for="IsServiceOrganization" class="form-check-input" type="checkbox" value="true" id="flexCheckDefault">
             <label asp-for="IsServiceOrganization" class="form-check-label" for="flexCheckDefault">
                 Company is Service Organization
-            </label>
+            </label>            
         </div>
-        
+                
         <input type="submit" class="btn-primary" value="Add Company" />
     </form>
 </div>
