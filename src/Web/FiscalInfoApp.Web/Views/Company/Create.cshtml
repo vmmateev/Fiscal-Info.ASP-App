@@ -1,0 +1,36 @@
+﻿@model FiscalInfoApp.Web.ViewModels.Company.CreateCompanyInputModel
+@{
+    this.ViewData["Title"] = "Add New Company";
+}
+<div class="col-md-6 offset-md-3">
+    <h1>@this.ViewData["Title"]</h1>
+    <form method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="City"></label>
+            <input asp-for="City" class="form-control" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Street"></label>
+            <input asp-for="Street" class="form-control" />
+            <span asp-validation-for="Street" class="text-danger"></span>
+        </div>
+
+        <div class="form-check">
+            <input asp-for="IsServiceOrganization" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label asp-for="IsServiceOrganization" class="form-check-label" for="flexCheckDefault">
+                Company is Service Organization
+            </label>
+        </div>
+        
+        <input type="submit" class="btn-primary" value="Add Company" />
+    </form>
+</div>

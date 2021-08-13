@@ -1,13 +1,9 @@
 ﻿namespace FiscalInfoApp.Web.Controllers
 {
     using System.Diagnostics;
-    using System.Linq;
-    using FiscalInfoApp.Data;
-    using FiscalInfoApp.Data.Common.Repositories;
-    using FiscalInfoApp.Data.Models;
-    using FiscalInfoApp.Services.Data;
+
+    using FiscalInfoApp.Services.Data.Home;
     using FiscalInfoApp.Web.ViewModels;
-    using FiscalInfoApp.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController

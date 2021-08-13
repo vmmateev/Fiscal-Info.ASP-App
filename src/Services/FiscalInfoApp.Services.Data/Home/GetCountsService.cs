@@ -1,4 +1,4 @@
-﻿namespace FiscalInfoApp.Services.Data
+﻿namespace FiscalInfoApp.Services.Data.Home
 {
     using System.Linq;
 

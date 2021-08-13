@@ -9,6 +9,8 @@
     using FiscalInfoApp.Data.Repositories;
     using FiscalInfoApp.Data.Seeding;
     using FiscalInfoApp.Services.Data;
+    using FiscalInfoApp.Services.Data.Company;
+    using FiscalInfoApp.Services.Data.Home;
     using FiscalInfoApp.Services.Mapping;
     using FiscalInfoApp.Services.Messaging;
     using FiscalInfoApp.Web.ViewModels;
@@ -66,6 +68,7 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IGetCountsService, GetCountsService>();
+            services.AddTransient<ICompanyService, CompanyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
