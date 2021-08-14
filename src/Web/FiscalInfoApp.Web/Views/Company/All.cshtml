@@ -1,0 +1,35 @@
+﻿@model FiscalInfoApp.Web.ViewModels.Company.CompanyListViewModel
+@{
+    this.ViewData["Title"] = "All Companies";
+}
+
+<h1>@this.ViewData["Title"]</h1>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Company Name</th>
+            <th scope="col">City</th>
+            <th scope="col">Street</th>
+            <th scope="col">Petrol Stations</th>
+            <th scope="col">Service Organization</th>
+        </tr>
+    </thead>
+    <tbody class="table">
+        @foreach (var company in Model.Companies)
+        {
+            <tr>
+                <th scope="row">></th>
+                <td>@company.Name</td>
+                <td>@company.City</td>
+                <td>@company.Street</td>
+                <td>@company.PetrolStationsCount</td>
+                <td>@company.IsServiceOrganization</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr />
+
+<partial name="_PagingPartial" model="@Model" />

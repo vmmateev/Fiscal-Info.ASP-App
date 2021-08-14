@@ -34,7 +34,29 @@
             await this.companyService.CreateCompanyAsync(input);
 
             // TODO redirect to Company All page
-            return this.Redirect("/");
+            return this.Redirect("/Company/All");
+        }
+
+        // Companies/All/1 2 3 4
+        public IActionResult All(int id = 1)
+        {
+            if (id < 1)
+            {
+                return this.NotFound();
+            }
+
+            const int ItemsPerPage = 12;
+
+            var viewModel = new CompanyListViewModel
+            {
+                PageNumber = id,
+                ItemsPerPage = ItemsPerPage,
+                ItemsCount = this.companyService.GetCompaniesCount(),
+                Companies = this.companyService.GetAllCompanies<CompanyInListViewModel>(id, ItemsPerPage), // For IMapper T Template Class viewModel
+                //Companies = this.companyService.GetAllCompanies(id, 12),
+            };
+
+            return this.View(viewModel);
         }
     }
 }
