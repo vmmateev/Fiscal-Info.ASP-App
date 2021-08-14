@@ -15,7 +15,7 @@
             this.companyRepository = companyRepository;
         }
 
-        public async Task CreateAsync(CreateCompanyInputModel input)
+        public async Task CreateCompanyAsync(CreateCompanyInputModel input)
         {
             var company = new Company
             {
