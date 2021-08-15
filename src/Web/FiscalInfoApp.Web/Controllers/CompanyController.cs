@@ -53,7 +53,8 @@
                 ItemsPerPage = ItemsPerPage,
                 ItemsCount = this.companyService.GetCompaniesCount(),
                 Companies = this.companyService.GetAllCompanies<CompanyInListViewModel>(id, ItemsPerPage), // For IMapper T Template Class viewModel
-                //Companies = this.companyService.GetAllCompanies(id, 12),
+
+                // Companies = this.companyService.GetAllCompanies(id, 12),
             };
 
             return this.View(viewModel);

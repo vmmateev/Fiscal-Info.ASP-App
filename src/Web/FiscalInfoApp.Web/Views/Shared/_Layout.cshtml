@@ -7,6 +7,8 @@
     <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    <link href="~/lib/fontawesome/css/all.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -20,6 +22,17 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-home"></i>
+                                Home Test On Hover
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index"> Home</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Settings" asp-action="Index"> Settings</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy"> Privacy & Policy</a>                                
+                            </div>
+                        </div>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>

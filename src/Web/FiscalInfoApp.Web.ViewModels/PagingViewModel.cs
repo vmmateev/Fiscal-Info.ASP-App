@@ -8,7 +8,7 @@
 
         public int ItemsCount { get; set; }
 
-        public int PagesCount => (int)Math.Ceiling((double)this.ItemsCount / this.ItemsPerPage); // 25 companies * 12 per page = 3 pages (2.083)
+        public int PagesCount => (int)Math.Ceiling((double)this.ItemsCount / this.ItemsPerPage); // 25 items * 12 per page = 3 pages (Ceiling(2.083)=3)
 
         public int ItemsPerPage { get; set; }
 
