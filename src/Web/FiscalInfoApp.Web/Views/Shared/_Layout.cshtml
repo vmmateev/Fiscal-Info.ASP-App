@@ -5,10 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/lib/fontawesome/css/all.css" rel="stylesheet" asp-append-version="true" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
 </head>
 <body>
     <header>
@@ -21,26 +22,25 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
+                    <div class="navbar-nav flex-grow-1">
                         <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-home"></i>
-                                Home Test On Hover
-                            </button>
+                            <a asp-controller="Home" asp-action="Index" class="btn"><i class="fas fa-home"></i> Home</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index"> Home</a>
+                                @*<a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index"> Home</a>*@
                                 <a class="dropdown-item" asp-area="" asp-controller="Settings" asp-action="Index"> Settings</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy"> Privacy & Policy</a>                                
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy"> Privacy & Policy</a>
                             </div>
                         </div>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
                         @if (this.User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Company" asp-action="Create">Add Company</a>
-                            </li>
+                        <div class="dropdown">
+                            <a asp-controller="Company" asp-action="All" class="btn"><i class="fas fa-cog"></i> Companies</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" asp-area="" asp-controller="Company" asp-action="All">List Companies</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Company" asp-action="Create"><i class="fas fa-cog"></i> Add Company</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy">Company Stats</a>
+                            </div>
+                        </div>                           
                         }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Company" asp-action="All">All Company</a>
@@ -51,19 +51,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                    </ul>
-                </div>             
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
-    
+
     <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @this.RenderBody()
         </main>
     </div>
-    
+
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

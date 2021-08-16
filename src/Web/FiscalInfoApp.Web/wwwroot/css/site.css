@@ -82,3 +82,14 @@ body {
     /*Without this, clicking will make it sticky*/
     pointer-events: none;
 }
+
+.dropdown:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown > .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 3s;
+}
