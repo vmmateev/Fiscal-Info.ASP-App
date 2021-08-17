@@ -2,6 +2,10 @@
 @{
     this.ViewData["Title"] = "All Petrol Stations";
 }
+@if (this.TempData.ContainsKey("Message"))
+{
+    <div class="alert alert-success">@this.TempData["Message"]</div>
+}
 
 <h1>@this.ViewData["Title"]</h1>
 <hr />
@@ -11,8 +15,8 @@
             <th scope="col">#</th>
             <th scope="col">Petrol Station Name</th>
             <th scope="col">City</th>
-            <th scope="col">Street</th>            
-            <th scope="col">Company Owner</th>            
+            <th scope="col">Street</th>
+            <th scope="col">Company Owner</th>
         </tr>
     </thead>
     <tbody class="table">
@@ -22,8 +26,8 @@
                 <th scope="row">></th>
                 <td>@petrolStation.Name</td>
                 <td>@petrolStation.City</td>
-                <td>@petrolStation.Street</td>                
-                <td>@petrolStation.CompanyName</td>                
+                <td>@petrolStation.Street</td>
+                <td>@petrolStation.CompanyName</td>
             </tr>
         }
     </tbody>

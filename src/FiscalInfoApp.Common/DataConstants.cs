@@ -36,7 +36,7 @@
         public static class SimCardConstants
         {
             public const int SimCardImsiLength = 15;
-            public const int SimCardGsmNumberLength = 12;
+            public const int GsmNumberLength = 12;
 
             public const int OperatorNameMinLength = 1;
             public const int OperatorNameMaxLength = 10;

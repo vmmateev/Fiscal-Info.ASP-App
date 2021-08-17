@@ -14,7 +14,7 @@
         public string Imsi { get; set; }
 
         [Required]
-        [MaxLength(SimCardGsmNumberLength)] //359123123456
+        [MaxLength(GsmNumberLength)] //359123123456
         public string GsmNumber { get; set; }
 
         [Required]

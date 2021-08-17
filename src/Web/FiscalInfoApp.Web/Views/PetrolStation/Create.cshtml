@@ -6,7 +6,7 @@
 <div class="col-md-6 offset-md-3">
     <h1>@this.ViewData["Title"]</h1>
     <form method="post">
-
+        <p>Petrol Station Form</p>
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="Name"></label>
@@ -30,6 +30,56 @@
             <label asp-for="CompanyId">Select company owner from the dropdown:</label>
             <select asp-for="CompanyId" class="form-control" asp-items="companiesItems"></select>
             <span asp-validation-for="CompanyId" class="text-danger"></span>
+        </div>
+
+        <p>Fiscal Printer Form</p>
+        <div class="form-group">
+            <label asp-for="OsNumber">Type the Fiscal Printer OSxxxxxx Identifier</label>
+            <input asp-for="OsNumber" class="form-control" />
+            <span asp-validation-for="OsNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MemoryNumber">Type the Fiscal Memory 58xxxxxx Identifier</label>
+            <input asp-for="MemoryNumber" class="form-control" />
+            <span asp-validation-for="MemoryNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Fdrid">After successfull registration in NRA input the FDRID number</label>
+            <input asp-for="Fdrid" class="form-control" />
+            <span asp-validation-for="Fdrid" class="text-danger"></span>
+        </div>
+
+        <p>Oil Level Form</p>
+        <div class="form-group">
+            <label asp-for="Brand">Oil level brand</label>
+            <input asp-for="Brand" class="form-control" />
+            <span asp-validation-for="Brand" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Model">Oillevel model</label>
+            <input asp-for="Model" class="form-control" />
+            <span asp-validation-for="Model" class="text-danger"></span>
+        </div>
+        <p>Sim card form</p>
+        <div class="form-group">
+            <label asp-for="Imsi">Input the IMSI sim card</label>
+            <input asp-for="Imsi" class="form-control" />
+            <span asp-validation-for="Imsi" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="GsmNumber">Provide the gsm number for the Sim Card</label>
+            <input asp-for="GsmNumber" class="form-control" />
+            <span asp-validation-for="GsmNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="OperatoName">Input the mobile operator for the current sim card</label>
+            <input asp-for="OperatoName" class="form-control" />
+            <span asp-validation-for="OperatoName" class="text-danger"></span>
         </div>
 
         <input type="submit" class="btn-primary" value="Add Petrol Station" />

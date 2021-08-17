@@ -62,10 +62,10 @@
                 input.CompaniesItems = this.companyService.GetAllCompaniesAsKeyValuePairs(); // dropdown menu company
                 return this.View(input);
             }
-            // add fiscal / oillevel / to be not required
-            await this.petrolStationService.CreatePetrolStationAsync(input);
 
-            return this.RedirectToAction("/");
+            await this.petrolStationService.CreatePetrolStationAsync(input);
+            this.TempData["Message"] = "Petrol Station added successfully.";
+            return this.RedirectToAction("All");
         }
     }
 }
