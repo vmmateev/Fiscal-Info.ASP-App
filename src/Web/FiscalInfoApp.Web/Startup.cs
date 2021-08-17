@@ -11,6 +11,7 @@
     using FiscalInfoApp.Services.Data;
     using FiscalInfoApp.Services.Data.Company;
     using FiscalInfoApp.Services.Data.Home;
+    using FiscalInfoApp.Services.Data.PetrolStation;
     using FiscalInfoApp.Services.Mapping;
     using FiscalInfoApp.Services.Messaging;
     using FiscalInfoApp.Web.ViewModels;
@@ -69,6 +70,7 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IGetCountsService, GetCountsService>();
             services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<IPetrolStationService, PetrolStationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

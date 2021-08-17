@@ -1,0 +1,33 @@
+﻿@model FiscalInfoApp.Web.ViewModels.PetrolStation.PetrolStationListViewModel
+@{
+    this.ViewData["Title"] = "All Petrol Stations";
+}
+
+<h1>@this.ViewData["Title"]</h1>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Petrol Station Name</th>
+            <th scope="col">City</th>
+            <th scope="col">Street</th>            
+            <th scope="col">Company Owner</th>            
+        </tr>
+    </thead>
+    <tbody class="table">
+        @foreach (var petrolStation in Model.PetrolStations)
+        {
+            <tr>
+                <th scope="row">></th>
+                <td>@petrolStation.Name</td>
+                <td>@petrolStation.City</td>
+                <td>@petrolStation.Street</td>                
+                <td>@petrolStation.CompanyName</td>                
+            </tr>
+        }
+    </tbody>
+</table>
+<hr />
+
+<partial name="_PagingPartial" model="@Model" />
