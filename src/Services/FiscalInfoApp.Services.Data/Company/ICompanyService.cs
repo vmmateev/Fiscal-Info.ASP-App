@@ -14,5 +14,7 @@
         int GetCompaniesCount();
 
         IEnumerable<KeyValuePair<int, string>> GetAllCompaniesAsKeyValuePairs(); // Визуализация на списък с фирмите при създаване на бензиностанция
+
+        IEnumerable<CompanyInStatsViewModel> GetAllStatsCompanies(int page, int itemsPerPage = 12);
     }
 }

@@ -9,7 +9,7 @@
 
     public class FuelDispenser : BaseDeletableModel<int>
     {
-        [Range(FuelDispenserNumberMin,FuelDispenserNumberMax)]
+        [Range(FuelDispenserNumberMin, FuelDispenserNumberMax)]
         public int DispenserNumber { get; set; }
 
         [MaxLength(BrandMaxLength)]
@@ -18,7 +18,7 @@
         [MaxLength(ModelMaxLength)]
         public string Model { get; set; }
 
-        [Range(NozzleCountMin,NozzleCountMax)]
+        [Range(NozzleCountMin, NozzleCountMax)]
         public int NozzleCount { get; set; }
 
         [MaxLength(MidCertificateMaxLength)]

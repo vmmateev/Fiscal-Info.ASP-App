@@ -12,6 +12,10 @@
     public class CompanyService : ICompanyService
     {
         private readonly IDeletableEntityRepository<Company> companyRepository;
+        private readonly IDeletableEntityRepository<PetrolStation> petrolStationRepository;
+        private readonly IDeletableEntityRepository<OilLevel> oilLevelRepository;
+        private readonly IDeletableEntityRepository<CommController> commControllerRepository;
+        private readonly IDeletableEntityRepository<FuelDispenser> fuelDispenserRepository;
 
         public CompanyService(IDeletableEntityRepository<Company> companyRepository)
         {
@@ -77,6 +81,28 @@
                 .OrderBy(x => x.Name)
                 .ToList()
                 .Select(x => new KeyValuePair<int, string>(x.Id, x.Name));
+        }
+
+        public IEnumerable<CompanyInStatsViewModel> GetAllStatsCompanies(int page, int itemPerPage = 12)
+        {
+            var companyCollection = this.companyRepository.AllAsNoTracking()
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemPerPage)
+                .Take(itemPerPage)
+                .Select(company => new CompanyInStatsViewModel
+                {
+
+                    CompanyId = company.Id,
+                    CompanyName = company.Name,
+                    PetrolStationsCount = company.PetrolStations.Count(),
+                    ProbesCount = company.PetrolStations.SelectMany(x => x.OilLevel.Probes).Count(),
+                    CommControllersCount = company.PetrolStations.SelectMany(x => x.CommControllers).Count(),
+                    FuelDispensersCount = company.PetrolStations.SelectMany(x => x.FuelDispensers).Count(),
+                })
+                //.To<CompanyInStatsViewModel>();
+                .ToList();
+
+            return companyCollection;
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿@model FiscalInfoApp.Web.ViewModels.Company.CompanyStatsViewModel
+@{
+    this.ViewData["Title"] = "Statistic of all Companies";
+}
+
+<h1>@this.ViewData["Title"]</h1>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Company Name</th>
+            <th scope="col">Number of petrol stations company own</th>
+            <th scope="col">Number of communication controllers</th>
+            <th scope="col">Number of Fuel dispensers</th>
+            <th scope="col">Number of probes measuring fuel</th>
+        </tr>
+    </thead>
+    <tbody class="table">
+        @foreach (var company in Model.Companies)
+        {
+            <tr>
+                <th scope="row">></th>
+                <td>@company.CompanyName</td>
+                <td>@company.PetrolStationsCount</td>
+                <td>@company.CommControllersCount</td>
+                <td>@company.FuelDispensersCount</td>
+                <td>@company.ProbesCount</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr />
+
+<partial name="_PagingPartialCompanyStats" model="@Model" />

@@ -11,11 +11,11 @@
     public class FuelTank : BaseDeletableModel<int>
     {
         [Required]
-        [Range(TankMinNumber,TankMaxNumber)]
+        [Range(TankMinNumber, TankMaxNumber)]
         public int TankNumber { get; set; }
 
         [Required]
-        [Range(FullVolumeMin,FullVolumeMax)]
+        [Range(FullVolumeMin, FullVolumeMax)]
         public double FullVolume { get; set; }
 
         [Required]
