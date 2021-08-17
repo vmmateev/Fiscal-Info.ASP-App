@@ -5,8 +5,8 @@
     using System.Threading.Tasks;
 
     using FiscalInfoApp.Data.Common.Repositories;
-    using FiscalInfoApp.Services.Mapping;
     using FiscalInfoApp.Data.Models;
+    using FiscalInfoApp.Services.Mapping;
     using FiscalInfoApp.Web.ViewModels.Company;
 
     public class CompanyService : ICompanyService
@@ -64,6 +64,19 @@
             var companiesCount = this.companyRepository.All().Count();
 
             return companiesCount;
+        }
+
+        public IEnumerable<KeyValuePair<int, string>> GetAllCompaniesAsKeyValuePairs()
+        {
+            return this.companyRepository.AllAsNoTracking()
+                .Select(x => new
+                {
+                    x.Id,
+                    x.Name,
+                })
+                .OrderBy(x => x.Name)
+                .ToList()
+                .Select(x => new KeyValuePair<int, string>(x.Id, x.Name));
         }
     }
 }

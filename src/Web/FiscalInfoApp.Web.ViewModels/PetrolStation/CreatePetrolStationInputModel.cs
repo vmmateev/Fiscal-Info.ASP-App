@@ -1,10 +1,11 @@
-﻿namespace FiscalInfoApp.Web.ViewModels.Company
+﻿namespace FiscalInfoApp.Web.ViewModels.PetrolStation
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using static FiscalInfoApp.Common.DataConstants.CompanyConstants;
+    using static FiscalInfoApp.Common.DataConstants.PetrolStationConstants;
 
-    public class CreateCompanyInputModel
+    public class CreatePetrolStationInputModel
     {
         [Required]
         [MinLength(NameMinLength)]
@@ -18,6 +19,9 @@
         [MinLength(StreetMinLength)]
         public string Street { get; set; }
 
-        public bool IsServiceOrganization { get; set; }
+        
+        public int CompanyId { get; set; }
+
+        public IEnumerable<KeyValuePair<int, string>> CompaniesItems { get; set; }
     }
 }

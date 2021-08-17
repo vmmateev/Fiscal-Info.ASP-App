@@ -1,4 +1,4 @@
-﻿namespace FiscalInfoApp.Web.ViewModels.Company
+﻿namespace FiscalInfoApp.Web.ViewModels
 {
     using System;
 
