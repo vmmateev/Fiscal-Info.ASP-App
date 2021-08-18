@@ -78,7 +78,7 @@
             fiscalPrinter.PetrolStationId = petrolStation.Id;
             oilLevel.PetrolStationId = petrolStation.Id;
 
-            // The link id-s are null 
+            // The link id-s are null without this
             await this.fiscalPrinterRepository.SaveChangesAsync();
             await this.simCardRepository.SaveChangesAsync();
             await this.oilLevelRepository.SaveChangesAsync();

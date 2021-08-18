@@ -3,10 +3,9 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    using static FiscalInfoApp.Common.DataConstants;
     using static FiscalInfoApp.Common.DataConstants.PetrolStationConstants;
 
-    using static FiscalInfoApp.Common.DataConstants;
-    
     public class CreatePetrolStationInputModel
     {
         [Required]

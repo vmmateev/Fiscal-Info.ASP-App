@@ -32,6 +32,7 @@
             }
 
             await this.companyService.CreateCompanyAsync(input);
+            this.TempData["Message"] = "Company added successfully.";
 
             // TODO redirect to Company All page
             return this.Redirect("/Company/All");

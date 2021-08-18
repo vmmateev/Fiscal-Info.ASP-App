@@ -33,26 +33,31 @@
                         </div>
                         @if (this.User.Identity.IsAuthenticated)
                         {
-                        <div class="dropdown">
-                            <a asp-controller="Company" asp-action="All" class="btn"><i class="fas fa-cog"></i> Companies</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" asp-area="" asp-controller="Company" asp-action="All">List Companies</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Company" asp-action="Create"><i class="fas fa-cog"></i> Add Company</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Company" asp-action="Stats">Company Stats</a>
+                            <div class="dropdown">
+                                <a asp-controller="Company" asp-action="All" class="btn"><i class="fas fa-cog"></i> Companies</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Company" asp-action="All"><i class="fas fa-list"></i> List Companies</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Company" asp-action="Create"><i class="fas fa-cog"></i> Add Company</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Company" asp-action="Stats">Company Stats</a>
+                                </div>
                             </div>
-                        </div> 
-                        <div class="dropdown">
-                            <a asp-controller="PetrolStation" asp-action="All" class="btn"><i class="fas fa-warehouse"></i> Petrol Stations</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" asp-area="" asp-controller="PetrolStation" asp-action="All">List All Petrol Stations</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="PetrolStation" asp-action="Create"><i class="fas fa-cog"></i> Add Petrol Station</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy">Petrol Stations Stats</a>
+                            <div class="dropdown">
+                                <a asp-controller="PetrolStation" asp-action="All" class="btn"><i class="fas fa-warehouse"></i> Petrol Stations</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" asp-area="" asp-controller="PetrolStation" asp-action="All"><i class="fas fa-list"></i> List All Petrol Stations</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="PetrolStation" asp-action="Create"><i class="fas fa-cog"></i> Add Petrol Station</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy">Petrol Stations Stats</a>
+                                </div>
                             </div>
-                        </div> 
+                            <div class="dropdown">
+                                <a asp-controller="FuelDispenser" asp-action="All" class="btn"><i class="fas fa-gas-pump"></i> Fuel Dispensers</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" asp-area="" asp-controller="FuelDispenser" asp-action="All"><i class="fas fa-list"></i> List All Fuel Dispensers</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="FuelDispenser" asp-action="Create"><i class="fas fa-cog"></i> Add Fuel Dispenser</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="FuelDispenser" asp-action="Edit">Edit FuelDispensers</a>
+                                </div>
+                            </div>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Company" asp-action="All">All Company</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">Settings</a>
                         </li>
