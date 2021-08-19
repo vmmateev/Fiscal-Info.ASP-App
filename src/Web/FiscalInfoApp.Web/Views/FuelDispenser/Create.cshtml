@@ -1,0 +1,58 @@
+﻿@model FiscalInfoApp.Web.ViewModels.FuelDispenser.CreateFuelDispenserInputModel
+
+@{
+    ViewData["Title"] = "Create Fuel Dispenser";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>FuelDispenser</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DispenserNumber" class="control-label"></label>
+                <input asp-for="DispenserNumber" class="form-control" />
+                <span asp-validation-for="DispenserNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NozzleCount" class="control-label"></label>
+                <input asp-for="NozzleCount" class="form-control" />
+                <span asp-validation-for="NozzleCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MidCertificate" class="control-label"></label>
+                <input asp-for="MidCertificate" class="form-control" />
+                <span asp-validation-for="MidCertificate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PetrolStationId">Choose Petrol Station</label>
+                <select asp-for="PetrolStationId" class="form-control">
+                    @foreach (var petrolStation in Model.PetrolStationItems)
+                    {
+                        <option value="@petrolStation.Id">@petrolStation.Name</option>
+                    }
+                </select>
+            </div>           
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="All">Back to List</a>
+</div>

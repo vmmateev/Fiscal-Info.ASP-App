@@ -1,0 +1,50 @@
+﻿@model FiscalInfoApp.Web.ViewModels.FuelDispenser.FuelDispenserListViewModel
+
+@{
+    ViewData["Title"] = "All Fuel Dispensers";
+}
+
+@if (this.TempData.ContainsKey("Message"))
+{
+    <div class="alert alert-success">@this.TempData["Message"]</div>
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Create New Dispenser</a>
+</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th><label>Dispenser number in Petrol Station</label></th>
+                <th><label>Dispenser Brand</label></th>
+                <th><label>Model</label></th>
+                <th><label>Nozzle Count</label></th>
+                <th><label>MID Certificate</label></th>
+                <th><label>Petrol Station City</label></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FuelDispensers)
+            {
+                <tr>
+                    <td>@item.DispenserNumber</td>
+                    <td>@item.Brand</td>
+                    <td>@item.Model</td>
+                    <td>@item.NozzleCount</td>
+                    <td>@item.MidCertificate</td>
+                    <td>@item.PetrolStationCity</td>
+                    <td>                        
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+<hr />
+
+<partial name="_PagingPartialAll.cshtml" model="@Model" />

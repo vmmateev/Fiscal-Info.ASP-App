@@ -1,9 +1,7 @@
 ﻿namespace FiscalInfoApp.Services.Data.PetrolStation
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     using FiscalInfoApp.Data.Common.Repositories;

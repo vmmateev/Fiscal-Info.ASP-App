@@ -10,6 +10,7 @@
     using FiscalInfoApp.Data.Seeding;
     using FiscalInfoApp.Services.Data;
     using FiscalInfoApp.Services.Data.Company;
+    using FiscalInfoApp.Services.Data.FuelDispenser;
     using FiscalInfoApp.Services.Data.Home;
     using FiscalInfoApp.Services.Data.PetrolStation;
     using FiscalInfoApp.Services.Mapping;
@@ -71,6 +72,7 @@
             services.AddTransient<IGetCountsService, GetCountsService>();
             services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<IPetrolStationService, PetrolStationService>();
+            services.AddTransient<IFuelDispenserService, FuelDispenserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
