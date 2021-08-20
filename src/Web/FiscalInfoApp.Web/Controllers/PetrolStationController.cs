@@ -24,6 +24,7 @@
             this.petrolStationService = petrolStationService;
         }
 
+        [HttpGet]
         public IActionResult All(int id = 1)
         {
             if (id < 1)
@@ -66,6 +67,27 @@
             await this.petrolStationService.CreatePetrolStationAsync(input);
             this.TempData["Message"] = "Petrol Station added successfully.";
             return this.RedirectToAction("All");
+        }
+
+        [HttpGet]
+        public IActionResult Stats(int id = 1)
+        {
+            if (id < 1)
+            {
+                return this.NotFound();
+            }
+
+            const int ItemsPerPage = 12;
+
+            var viewModel = new PetrolStationListViewModel
+            {
+                PageNumber = id,
+                ItemsPerPage = ItemsPerPage,
+                ItemsCount = this.petrolStationService.GetPetrolStationsCount(),
+                PetrolStations = this.petrolStationService.GetAllPetrolStations(id, ItemsPerPage),
+            };
+
+            return this.View(viewModel);
         }
     }
 }

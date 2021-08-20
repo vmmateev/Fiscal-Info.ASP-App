@@ -1,0 +1,54 @@
+﻿@model FiscalInfoApp.Web.ViewModels.PetrolStation.PetrolStationListViewModel
+
+@{
+    ViewData["Title"] = "Stats for all Petrol Stations";
+}
+
+@if (this.TempData.ContainsKey("Message"))
+{
+    <div class="alert alert-success">@this.TempData["Message"]</div>
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Create New Dispenser</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th><label>Name of Petrol Station</label></th>
+            <th><label>Street Address</label></th>
+            <th><label>Petrol Station City</label></th>
+            <th><label>Company Owner</label></th>
+            <th><label>Fiscal Printer Identification</label></th>
+            <th><label>Fiscal Memory Id</label></th>
+            <th><label>FDRID from NRA</label></th>
+            <th><label>Sim card mobile number</label></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PetrolStations)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Street</td>
+                <td>@item.City</td>
+                <td>@item.CompanyName</td>
+                <td>@item.FiscalPrinterOs</td>
+                <td>@item.FiscalPrinterMemory</td>
+                <td>@item.Fdrid</td>
+                <td>@item.GsmNumber</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<partial name="_PagingPartialStats.cshtml" model="@Model" />

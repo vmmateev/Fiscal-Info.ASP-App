@@ -96,6 +96,12 @@
                    Street = x.Street,
                    CompanyId = x.CompanyId,
                    CompanyName = x.Company.Name,
+                   FiscalPrinterId = x.FiscalPrinter.Id,
+                   FiscalPrinterOs = x.FiscalPrinter.OsNumber,
+                   FiscalPrinterMemory = x.FiscalPrinter.MemoryNumber,
+                   Fdrid = x.FiscalPrinter.Fdrid,
+                   SimCardId = x.FiscalPrinter.SimCard.Id,
+                   GsmNumber = x.FiscalPrinter.SimCard.GsmNumber,
                })
                .OrderBy(x => x.CompanyName)
             .ToList();

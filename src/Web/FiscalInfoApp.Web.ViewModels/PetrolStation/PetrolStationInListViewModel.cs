@@ -19,5 +19,17 @@
 
         [DisplayName("Petrol Station Company")]
         public string CompanyName { get; set; }
+
+        public int FiscalPrinterId { get; set; }
+
+        public string FiscalPrinterOs { get; set; }
+
+        public string FiscalPrinterMemory { get; set; }
+
+        public string Fdrid { get; set; }
+
+        public int SimCardId { get; set; }
+
+        public string GsmNumber { get; set; }
     }
 }
