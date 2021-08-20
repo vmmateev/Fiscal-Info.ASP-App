@@ -66,7 +66,7 @@
             return this.fuelTankRepository.AllAsNoTracking().Count();
         }
 
-        public FuelTankInListViewModel GetFuelTankById(int id)
+        public FuelTankInListViewModel GetFuelTankById(int? id)
         {
             var fuelTankById = this.fuelTankRepository.All()
                 .Where(x => x.Id == id)
@@ -80,6 +80,7 @@
                     FuelType = x.FuelType,
                     PetrolStationId = x.PetrolStationId,
                     PetrolStationCity = x.PetrolStation.City,
+                    PetrolStationName = x.PetrolStation.Name,
                 })
                 .FirstOrDefault();
 

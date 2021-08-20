@@ -15,7 +15,7 @@
 
         public Task CreateFuelTankAsync(CreateFuelTankInputModel input);
 
-        public FuelTankInListViewModel GetFuelTankById(int id);
+        public FuelTankInListViewModel GetFuelTankById(int? id);
 
         public void SoftDeleteFuelTank(int id);
     }

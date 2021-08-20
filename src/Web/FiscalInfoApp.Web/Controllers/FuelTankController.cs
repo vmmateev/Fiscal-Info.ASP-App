@@ -80,8 +80,47 @@
         [HttpGet]
         public IActionResult Details(int? id)
         {
-            // Todo : details view of FuelTank
-            return this.View();
+            if (id == null)
+            {
+                return this.NotFound();
+            }
+
+            var fuelTank = this.fuelTankService.GetFuelTankById(id);
+
+            if (fuelTank == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(fuelTank);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return this.NotFound();
+            }
+
+            var fuelTank = this.fuelTankService.GetFuelTankById(id);
+
+            if (fuelTank == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(fuelTank);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            this.fuelTankService.SoftDeleteFuelTank(id);
+
+            this.TempData["Message"] = "Fuel tank deleted successfully";
+
+            return this.RedirectToAction(nameof(this.All));
         }
     }
 }

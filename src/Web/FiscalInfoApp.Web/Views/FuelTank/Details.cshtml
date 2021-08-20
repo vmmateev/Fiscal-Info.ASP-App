@@ -1,0 +1,55 @@
+﻿@model FiscalInfoApp.Web.ViewModels.FuelTank.FuelTankInListViewModel
+
+@{
+    ViewData["Title"] = "Fuel Tank Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Fuel Tank Details</h4>
+    <hr />
+    <table class="table table-striped col-md-6">
+        <thead>
+            <tr>
+                <th scope="col">Parameter Name</th>
+                <th scope="col">Parameter Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th><label>Dispenser Number</label></th>
+                <td>@Model.TankNumber</td>
+            </tr>
+            <tr>
+                <th><label>Fuel Tank Full Volume</label></th>
+                <td>@Model.FullVolume</td>
+            </tr>
+            <tr>
+                <th><label>Diameter of fuel tank in cm</label></th>
+                <td>@Model.Diameter</td>
+            </tr>
+            <tr>
+                <th><label>Calibration Table Date</label></th>
+                <td>@Model.CalibrationDate</td>
+            </tr>
+            <tr>
+                <th><label>Fuel Type</label></th>
+                <td>@Model.FuelType</td>
+            </tr>
+            <tr>
+                <th><label>Petrol Station Name</label></th>
+                <td>@Model.PetrolStationName</td>
+            </tr>
+            <tr>
+                <th><label>Petrol Station City</label></th>
+                <td>@Model.PetrolStationCity</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <div class="col-md-4 align-self-center text-center">        
+        <a asp-action="All">Back to List of Fuel Tanks</a>
+    </div>
+</div>
