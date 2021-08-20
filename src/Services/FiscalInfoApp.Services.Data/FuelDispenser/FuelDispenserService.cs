@@ -66,7 +66,7 @@
 
         public int GetAllFuelDispensersCount()
         {
-            return this.fuelDispenserRepository.All().Count();
+            return this.fuelDispenserRepository.AllAsNoTracking().Count();
         }
 
         public FuelDispenserInListViewModel GetFuelDispenserById(int? id)

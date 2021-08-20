@@ -11,9 +11,12 @@
     {
         public int GetAllFuelTanksCount();
 
-        public IEnumerable<FuelTankInListViewModel> GetAllFuelTanks();
+        public IEnumerable<FuelTankInListViewModel> GetAllFuelTanks(int page, int itemsPerPage);
 
         public Task CreateFuelTankAsync(CreateFuelTankInputModel input);
 
+        public FuelTankInListViewModel GetFuelTankById(int id);
+
+        public void SoftDeleteFuelTank(int id);
     }
 }

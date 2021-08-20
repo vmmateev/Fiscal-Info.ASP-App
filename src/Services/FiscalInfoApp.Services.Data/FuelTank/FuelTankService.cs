@@ -1,10 +1,9 @@
 ﻿namespace FiscalInfoApp.Services.Data.FuelTank
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
+
     using FiscalInfoApp.Data.Common.Repositories;
     using FiscalInfoApp.Data.Models;
     using FiscalInfoApp.Web.ViewModels.FuelTank;
@@ -38,14 +37,62 @@
             await this.fuelTankRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<FuelTankInListViewModel> GetAllFuelTanks()
+        public IEnumerable<FuelTankInListViewModel> GetAllFuelTanks(int page, int itemsPerPage = 12)
         {
-            throw new NotImplementedException();
+            var fuelTanks = this.fuelTankRepository.All()
+                .OrderBy(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .Select(x => new FuelTankInListViewModel
+                {
+                    Id = x.Id,
+                    TankNumber = x.TankNumber,
+                    CalibrationDate = x.CalibrationDate.ToString("d"),
+                    Diameter = x.Diameter,
+                    FullVolume = x.FullVolume,
+                    FuelType = x.FuelType,
+                    PetrolStationId = x.PetrolStationId,
+                    PetrolStationCity = x.PetrolStation.City,
+                    PetrolStationName = x.PetrolStation.Name,
+                })
+                .OrderBy(x => x.PetrolStationId)
+                .ToList();
+
+            return fuelTanks;
         }
 
         public int GetAllFuelTanksCount()
         {
             return this.fuelTankRepository.AllAsNoTracking().Count();
+        }
+
+        public FuelTankInListViewModel GetFuelTankById(int id)
+        {
+            var fuelTankById = this.fuelTankRepository.All()
+                .Where(x => x.Id == id)
+                .Select(x => new FuelTankInListViewModel
+                {
+                    Id = x.Id,
+                    TankNumber = x.TankNumber,
+                    CalibrationDate = x.CalibrationDate.ToString("d"),
+                    Diameter = x.Diameter,
+                    FullVolume = x.FullVolume,
+                    FuelType = x.FuelType,
+                    PetrolStationId = x.PetrolStationId,
+                    PetrolStationCity = x.PetrolStation.City,
+                })
+                .FirstOrDefault();
+
+            return fuelTankById;
+        }
+
+        public void SoftDeleteFuelTank(int id)
+        {
+            var fuelTank = this.fuelTankRepository.All()
+                .Where(x => x.Id == id)
+                .FirstOrDefault();
+            this.fuelTankRepository.Delete(fuelTank);
+            this.fuelTankRepository.SaveChangesAsync();
         }
     }
 }

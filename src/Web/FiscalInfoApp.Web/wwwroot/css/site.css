@@ -76,6 +76,7 @@ body {
 -------------------------------------------------- */
 .dropdown:hover > .dropdown-menu {
     display: block;
+    margin-top: 0;
 }
 
 .dropdown > .dropdown-toggle:active {
@@ -93,3 +94,26 @@ body {
     visibility: hidden;
     transition-delay: 3s;
 }
+
+#footer {
+    clear: both;
+    bottom: 0; /* this line is no longer necessary either; see below */
+    height: 63px;
+    margin-top: 1px;
+    text-align: center;
+    line-height: 103px;
+    background-color: #fff;
+    display: flex;
+    align-content: flex-end;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+ 
