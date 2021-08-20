@@ -1,0 +1,47 @@
+﻿@model FiscalInfoApp.Web.ViewModels.CommDevice.CommDeviceInListViewModel
+
+@{
+    ViewData["Title"] = "Details of Communication Controller";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Comm Controller Details</h4>
+    <hr />
+    <table class="table table-striped col-md-6">
+        <thead>
+            <tr>
+                <th scope="col">Parameter Name</th>
+                <th scope="col">Parameter Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th><label>Communication Type</label></th>
+                <td>@Model.CommType</td>
+            </tr>
+            <tr>
+                <th><label>Controller box colour</label></th>
+                <td>@Model.BoxColour</td>
+            </tr>
+            <tr>
+                <th><label>Controller is concentrator</label></th>
+                <td>@Model.IsConcentrator</td>
+            </tr>
+            <tr>
+                <th><label>Name of Petrol Station</label></th>
+                <td>@Model.PetrolStationName</td>
+            </tr>
+            <tr>
+                <th><label>Petrol Station City</label></th>
+                <td>@Model.PetrolStationCity</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <div class="col-md-4 align-self-center text-center">        
+        <a asp-action="All">Back to List of Communication Controllers</a>
+    </div>
+</div>

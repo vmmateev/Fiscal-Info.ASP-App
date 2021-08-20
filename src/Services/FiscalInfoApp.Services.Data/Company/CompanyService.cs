@@ -99,7 +99,6 @@
                     CommControllersCount = company.PetrolStations.SelectMany(x => x.CommControllers).Count(),
                     FuelDispensersCount = company.PetrolStations.SelectMany(x => x.FuelDispensers).Count(),
                 })
-                //.To<CompanyInStatsViewModel>();
                 .ToList();
 
             return companyCollection;

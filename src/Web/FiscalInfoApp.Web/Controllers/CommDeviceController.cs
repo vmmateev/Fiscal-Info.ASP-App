@@ -1,36 +1,38 @@
 ﻿namespace FiscalInfoApp.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using FiscalInfoApp.Data.Common.Repositories;
     using FiscalInfoApp.Data.Models;
+    using FiscalInfoApp.Services.Data.CommDevice;
     using FiscalInfoApp.Services.Data.FuelDispenser;
-    using FiscalInfoApp.Services.Data.FuelTank;
     using FiscalInfoApp.Services.Data.PetrolStation;
-    using FiscalInfoApp.Web.ViewModels.FuelTank;
+    using FiscalInfoApp.Web.ViewModels.CommDevice;
     using Microsoft.AspNetCore.Mvc;
 
-    using static FiscalInfoApp.Common.PagingConstants;
-
-    public class FuelTankController : BaseController
+    public class CommDeviceController : BaseController
     {
-        private readonly IDeletableEntityRepository<FuelTank> fuelTanksRepository;
         private readonly IDeletableEntityRepository<PetrolStation> petrolStationRepository;
-        private readonly IFuelTankService fuelTankService;
+        private readonly IDeletableEntityRepository<CommController> commRepository;
         private readonly IPetrolStationService petrolStationService;
+        private readonly ICommDeviceService commDeviceService;
         private readonly IFuelDispenserService fuelDispenser;
 
-        public FuelTankController(
-            IDeletableEntityRepository<FuelTank> fuelTanksRepository,
+        public CommDeviceController(
+            ICommDeviceService commDeviceService,
+            IDeletableEntityRepository<CommController> commRepository,
             IDeletableEntityRepository<PetrolStation> petrolStationRepository,
-            IFuelTankService fuelTankService,
             IPetrolStationService petrolStationService,
-            IFuelDispenserService fuelDispenser)
+            IFuelDispenserService fuelDispenser
+            )
         {
-            this.fuelTanksRepository = fuelTanksRepository;
             this.petrolStationRepository = petrolStationRepository;
-            this.fuelTankService = fuelTankService;
             this.petrolStationService = petrolStationService;
+            this.commRepository = commRepository;
+            this.commDeviceService = commDeviceService;
             this.fuelDispenser = fuelDispenser;
         }
 
@@ -41,13 +43,14 @@
             {
                 return this.NotFound();
             }
-            const int ItemsPerPage = 6;
-            var viewModel = new FuelTankListViewModel
+            const int ItemsPerPage = 3;
+
+            var viewModel = new ComDeviceListViewModel
             {
                 PageNumber = id,
                 ItemsPerPage = ItemsPerPage,
-                ItemsCount = this.fuelTankService.GetAllFuelTanksCount(),
-                FuelTanks = this.fuelTankService.GetAllFuelTanks(id, ItemsPerPage),
+                ItemsCount = this.commDeviceService.GetAllCommDevicesCount(),
+                CommDevices = this.commDeviceService.GetAllCommDevices(id, ItemsPerPage),
             };
 
             return this.View(viewModel);
@@ -56,23 +59,22 @@
         [HttpGet]
         public IActionResult Create()
         {
-            var input = new CreateFuelTankInputModel();
+            var input = new CreateCommDeviceInputModel();
             input.PetrolStationItems = this.fuelDispenser.GetPetrolStationsIdName();
 
             return this.View(input);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateFuelTankInputModel input)
+        public async Task<IActionResult> Create(CreateCommDeviceInputModel input)
         {
             if (!this.ModelState.IsValid)
             {
                 input.PetrolStationItems = this.fuelDispenser.GetPetrolStationsIdName();
                 return this.View(input);
             }
-
-            await this.fuelTankService.CreateFuelTankAsync(input);
-            this.TempData["Message"] = "Fuel Tank created successfully.";
+            await this.commDeviceService.CreateCommDeviceAsync(input);
+            this.TempData["Message"] = "Communication controller created successfully.";
 
             return this.RedirectToAction(nameof(this.All));
         }
@@ -85,14 +87,14 @@
                 return this.NotFound();
             }
 
-            var fuelTank = this.fuelTankService.GetFuelTankById(id);
+            var commController = this.commDeviceService.GetCommDeviceById(id);
 
-            if (fuelTank == null)
+            if (commController == null)
             {
                 return this.NotFound();
             }
 
-            return this.View(fuelTank);
+            return this.View(commController);
         }
 
         [HttpGet]
@@ -103,7 +105,7 @@
                 return this.NotFound();
             }
 
-            var fuelTank = this.fuelTankService.GetFuelTankById(id);
+            var fuelTank = this.commDeviceService.GetCommDeviceById(id);
 
             if (fuelTank == null)
             {
@@ -116,9 +118,9 @@
         [HttpPost]
         public IActionResult Delete(int id)
         {
-            this.fuelTankService.SoftDeleteFuelTank(id);
+            this.commDeviceService.SoftDeleteCommDevice(id);
 
-            this.TempData["Message"] = "Fuel tank deleted successfully";
+            this.TempData["Message"] = "Communication controller deleted successfully";
 
             return this.RedirectToAction(nameof(this.All));
         }

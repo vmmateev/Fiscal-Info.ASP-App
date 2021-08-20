@@ -63,6 +63,13 @@
                                     <a class="dropdown-item" asp-area="" asp-controller="FuelTank" asp-action="Create"><i class="fas fa-cog"></i> Add Fuel Tank</a>
                                 </div>
                             </div>
+                             <div class="dropdown">
+                                <a asp-controller="CommDevice" asp-action="All" class="btn"><i class="fas fa-broadcast-tower"></i> Communication Controllers</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" asp-area="" asp-controller="CommDevice" asp-action="All"><i class="fas fa-list"></i> List All Communication Controllers</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="CommDevice" asp-action="Create"><i class="fas fa-cog"></i> Add Communication Controller</a>
+                                </div>
+                            </div>
 
                         }
                     </div>

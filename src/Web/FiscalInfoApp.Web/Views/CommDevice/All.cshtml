@@ -1,0 +1,48 @@
+﻿@model FiscalInfoApp.Web.ViewModels.CommDevice.ComDeviceListViewModel
+
+@{
+    ViewData["Title"] = "All Communication Controllers";
+}
+
+@if (this.TempData.ContainsKey("Message"))
+{
+    <div class="alert alert-success">@this.TempData["Message"]</div>
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Create New Communication Controller</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th><label>Communication Type</label></th>
+            <th><label>Controller box colour</label></th>
+            <th><label>Controller is a concentrator</label></th>
+            <th><label>Name of Petrol Station Installed</label></th>
+            <th><label>Location of Petrol Station</label></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CommDevices)
+        {
+            <tr>
+                <td>@item.CommType</td>
+                <td>@item.BoxColour</td>
+                <td>@item.IsConcentrator</td>                
+                <td>@item.PetrolStationName</td>
+                <td>@item.PetrolStationCity</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<partial name="_PagingPartialAll.cshtml" model="@Model" />
