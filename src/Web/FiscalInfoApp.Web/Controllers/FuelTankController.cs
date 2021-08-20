@@ -6,6 +6,7 @@
     using FiscalInfoApp.Data.Models;
     using FiscalInfoApp.Services.Data.FuelTank;
     using FiscalInfoApp.Services.Data.PetrolStation;
+    using FiscalInfoApp.Services.Data.FuelDispenser;
     using FiscalInfoApp.Web.ViewModels.FuelTank;
     using Microsoft.AspNetCore.Mvc;
 
@@ -17,17 +18,20 @@
         private readonly IDeletableEntityRepository<PetrolStation> petrolStationRepository;
         private readonly IFuelTankService fuelTankService;
         private readonly IPetrolStationService petrolStationService;
+        private readonly IFuelDispenserService fuelDispenser;
 
         public FuelTankController(
             IDeletableEntityRepository<FuelTank> fuelTanksRepository,
             IDeletableEntityRepository<PetrolStation> petrolStationRepository,
             IFuelTankService fuelTankService,
-            IPetrolStationService petrolStationService)
+            IPetrolStationService petrolStationService,
+            IFuelDispenserService fuelDispenser)
         {
+            this.fuelTanksRepository = fuelTanksRepository;
             this.petrolStationRepository = petrolStationRepository;
             this.fuelTankService = fuelTankService;
             this.petrolStationService = petrolStationService;
-            this.fuelTanksRepository = fuelTanksRepository;
+            this.fuelDispenser = fuelDispenser;
         }
 
         [HttpGet] // FuelTanks/All
@@ -50,16 +54,34 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
-            return this.View();
+            var input = new CreateFuelTankInputModel();
+            input.PetrolStationItems = this.fuelDispenser.GetPetrolStationsIdName();
+
+            return this.View(input);
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Create()
-        //{
-        //    return this.View();
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateFuelTankInputModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                input.PetrolStationItems = this.fuelDispenser.GetPetrolStationsIdName();
+                return this.View(input);
+            }
 
+            await this.fuelTankService.CreateFuelTankAsync(input);
+            this.TempData["Message"] = "Fuel Tank created successfully.";
+
+            return this.RedirectToAction(nameof(this.All));
+        }
+
+        [HttpGet]
+        public IActionResult Details(int? id)
+        {
+            // Todo : details view of FuelTank
+            return this.View();
+        }
     }
 }
