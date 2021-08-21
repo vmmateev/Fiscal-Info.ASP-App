@@ -7,6 +7,7 @@
     using FiscalInfoApp.Data.Common.Repositories;
     using FiscalInfoApp.Data.Models;
     using FiscalInfoApp.Web.ViewModels.CommDevice;
+    using Microsoft.EntityFrameworkCore;
 
     public class CommDeviceService : ICommDeviceService
     {
@@ -81,9 +82,9 @@
 
         public async Task SoftDeleteCommDevice(int id)
         {
-            var commDevice = this.commRepository.All()
+            var commDevice = await this.commRepository.All()
                 .Where(x => x.Id == id)
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
 
             this.commRepository.Delete(commDevice);
             await this.commRepository.SaveChangesAsync();
