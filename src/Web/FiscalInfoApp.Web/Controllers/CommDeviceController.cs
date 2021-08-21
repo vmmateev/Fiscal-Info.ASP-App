@@ -115,7 +115,7 @@
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-           await this.commDeviceService.SoftDeleteCommDevice(id);
+            await this.commDeviceService.SoftDeleteCommDevice(id);
 
             this.TempData["Message"] = "Communication controller deleted successfully";
 

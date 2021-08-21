@@ -7,6 +7,7 @@
     using FiscalInfoApp.Data.Common.Repositories;
     using FiscalInfoApp.Data.Models;
     using FiscalInfoApp.Web.ViewModels.FuelDispenser;
+    using Microsoft.EntityFrameworkCore;
 
     public class FuelDispenserService : IFuelDispenserService
     {
@@ -104,8 +105,8 @@
 
         public async Task SoftDeleteFuelDispenserAsync(int id)
         {
-            var fuelDispenser = this.fuelDispenserRepository.All()
-                .FirstOrDefault(x => x.Id == id);
+            var fuelDispenser = await this.fuelDispenserRepository.All()
+                .FirstOrDefaultAsync(x => x.Id == id);
 
             this.fuelDispenserRepository.Delete(fuelDispenser);
             await this.fuelDispenserRepository.SaveChangesAsync();

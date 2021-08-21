@@ -39,6 +39,7 @@
             {
                 return this.NotFound();
             }
+
             const int ItemsPerPage = 6;
             var viewModel = new FuelTankListViewModel
             {
@@ -112,9 +113,9 @@
         }
 
         [HttpPost]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            this.fuelTankService.SoftDeleteFuelTank(id);
+            await this.fuelTankService.SoftDeleteFuelTank(id);
 
             this.TempData["Message"] = "Fuel tank deleted successfully";
 

@@ -7,6 +7,7 @@
     using FiscalInfoApp.Data.Common.Repositories;
     using FiscalInfoApp.Data.Models;
     using FiscalInfoApp.Web.ViewModels.FuelTank;
+    using Microsoft.EntityFrameworkCore;
 
     public class FuelTankService : IFuelTankService
     {
@@ -87,13 +88,13 @@
             return fuelTankById;
         }
 
-        public void SoftDeleteFuelTank(int id)
+        public async Task SoftDeleteFuelTank(int id)
         {
-            var fuelTank = this.fuelTankRepository.All()
+            var fuelTank = await this.fuelTankRepository.All()
                 .Where(x => x.Id == id)
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
             this.fuelTankRepository.Delete(fuelTank);
-            this.fuelTankRepository.SaveChangesAsync();
+            await this.fuelTankRepository.SaveChangesAsync();
         }
     }
 }

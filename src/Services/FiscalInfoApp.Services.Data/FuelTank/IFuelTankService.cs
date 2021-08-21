@@ -17,6 +17,6 @@
 
         public FuelTankInListViewModel GetFuelTankById(int? id);
 
-        public void SoftDeleteFuelTank(int id);
+        public Task SoftDeleteFuelTank(int id);
     }
 }

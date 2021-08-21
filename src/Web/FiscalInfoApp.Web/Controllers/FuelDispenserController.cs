@@ -111,9 +111,9 @@
         }
 
         [HttpPost]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            this.fuelDispenserService.SoftDeleteFuelDispenserAsync(id);
+            await this.fuelDispenserService.SoftDeleteFuelDispenserAsync(id);
 
             this.TempData["Message"] = "Fuel dispenser deleted successfully";
 
