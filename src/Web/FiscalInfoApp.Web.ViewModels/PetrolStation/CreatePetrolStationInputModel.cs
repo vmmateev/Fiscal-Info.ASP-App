@@ -10,14 +10,17 @@
     {
         [Required]
         [MinLength(NameMinLength)]
+        [MaxLength(NameMaxLength)]
         public string Name { get; set; }
 
         [Required]
         [MinLength(CityMinLength)]
+        [MaxLength(CityMaxLength)]
         public string City { get; set; }
 
         [Required]
         [MinLength(StreetMinLength)]
+        [MaxLength(StreetMaxLength)]
         public string Street { get; set; }
 
         // Fiscal Printer
@@ -44,15 +47,18 @@
 
         [Required]
         [MinLength(SimCardConstants.OperatorNameMinLength)]
+        [MaxLength(SimCardConstants.OperatorNameMaxLength)]
         public string OperatoName { get; set; }
 
         // Oillevel
         [Required]
         [MinLength(OilLevelTypeConstants.BrandMinLength)]
+        [MaxLength(OilLevelTypeConstants.BrandMaxLength)]
         public string Brand { get; set; }
 
         [Required]
         [MinLength(OilLevelTypeConstants.ModelMinLength)]
+        [MaxLength(OilLevelTypeConstants.ModelMaxLength)]
         public string Model { get; set; }
 
         // DropDown Company

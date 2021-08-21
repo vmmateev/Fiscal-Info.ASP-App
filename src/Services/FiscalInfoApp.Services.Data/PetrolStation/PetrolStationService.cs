@@ -6,6 +6,7 @@
 
     using FiscalInfoApp.Data.Common.Repositories;
     using FiscalInfoApp.Data.Models;
+    
     using FiscalInfoApp.Web.ViewModels.PetrolStation;
 
     public class PetrolStationService : IPetrolStationService
@@ -114,6 +115,19 @@
             var petrolStationsCount = this.petrolStationRepository.All().Count();
 
             return petrolStationsCount;
+        }
+
+        public IEnumerable<PetrolStationViewModelDropDown> GetPetrolStationsIdName()
+        {
+            var viewModel = this.petrolStationRepository.AllAsNoTracking()
+                .Select(x => new PetrolStationViewModelDropDown
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                })
+                .ToList();
+
+            return viewModel;
         }
     }
 }

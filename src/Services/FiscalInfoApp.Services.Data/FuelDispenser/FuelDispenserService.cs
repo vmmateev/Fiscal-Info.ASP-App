@@ -89,26 +89,26 @@
             return fuelDispenser;
         }
 
-        public IEnumerable<PetrolStationViewModelDropDown> GetPetrolStationsIdName()
-        {
-            var viewModel = this.petrolStationRepository.AllAsNoTracking()
-                .Select(x => new PetrolStationViewModelDropDown
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                })
-                .ToList();
+        //public IEnumerable<PetrolStationViewModelDropDown> GetPetrolStationsIdName()
+        //{
+        //    var viewModel = this.petrolStationRepository.AllAsNoTracking()
+        //        .Select(x => new PetrolStationViewModelDropDown
+        //        {
+        //            Id = x.Id,
+        //            Name = x.Name,
+        //        })
+        //        .ToList();
 
-            return viewModel;
-        }
+        //    return viewModel;
+        //}
 
-        public void SoftDeleteFuelDispenserAsync(int id)
+        public async Task SoftDeleteFuelDispenserAsync(int id)
         {
-            var fuelDispenser = this.fuelDispenserRepository.AllAsNoTracking()
+            var fuelDispenser = this.fuelDispenserRepository.All()
                 .FirstOrDefault(x => x.Id == id);
 
             this.fuelDispenserRepository.Delete(fuelDispenser);
-            this.fuelDispenserRepository.SaveChangesAsync();
+            await this.fuelDispenserRepository.SaveChangesAsync();
         }
     }
 }

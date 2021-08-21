@@ -79,14 +79,14 @@
             return commDevice;
         }
 
-        public void SoftDeleteCommDevice(int id)
+        public async Task SoftDeleteCommDevice(int id)
         {
             var commDevice = this.commRepository.All()
                 .Where(x => x.Id == id)
                 .FirstOrDefault();
 
             this.commRepository.Delete(commDevice);
-            this.commRepository.SaveChangesAsync();
+            await this.commRepository.SaveChangesAsync();
         }
     }
 }

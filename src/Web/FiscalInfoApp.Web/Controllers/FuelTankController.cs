@@ -10,8 +10,6 @@
     using FiscalInfoApp.Web.ViewModels.FuelTank;
     using Microsoft.AspNetCore.Mvc;
 
-    using static FiscalInfoApp.Common.PagingConstants;
-
     public class FuelTankController : BaseController
     {
         private readonly IDeletableEntityRepository<FuelTank> fuelTanksRepository;
@@ -57,7 +55,7 @@
         public IActionResult Create()
         {
             var input = new CreateFuelTankInputModel();
-            input.PetrolStationItems = this.fuelDispenser.GetPetrolStationsIdName();
+            input.PetrolStationItems = this.petrolStationService.GetPetrolStationsIdName();
 
             return this.View(input);
         }
@@ -67,7 +65,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                input.PetrolStationItems = this.fuelDispenser.GetPetrolStationsIdName();
+                input.PetrolStationItems = this.petrolStationService.GetPetrolStationsIdName();
                 return this.View(input);
             }
 

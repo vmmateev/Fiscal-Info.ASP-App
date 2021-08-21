@@ -1,8 +1,5 @@
 ﻿namespace FiscalInfoApp.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
 
     using FiscalInfoApp.Data.Common.Repositories;
@@ -60,7 +57,7 @@
         public IActionResult Create()
         {
             var input = new CreateCommDeviceInputModel();
-            input.PetrolStationItems = this.fuelDispenser.GetPetrolStationsIdName();
+            input.PetrolStationItems = this.petrolStationService.GetPetrolStationsIdName();
 
             return this.View(input);
         }
@@ -70,7 +67,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                input.PetrolStationItems = this.fuelDispenser.GetPetrolStationsIdName();
+                input.PetrolStationItems = this.petrolStationService.GetPetrolStationsIdName();
                 return this.View(input);
             }
             await this.commDeviceService.CreateCommDeviceAsync(input);
@@ -116,9 +113,9 @@
         }
 
         [HttpPost]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            this.commDeviceService.SoftDeleteCommDevice(id);
+           await this.commDeviceService.SoftDeleteCommDevice(id);
 
             this.TempData["Message"] = "Communication controller deleted successfully";
 

@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using FiscalInfoApp.Web.ViewModels.FuelDispenser;
+    using FiscalInfoApp.Web.ViewModels.PetrolStation;
 
     public class CommDeviceInListViewModel
     {

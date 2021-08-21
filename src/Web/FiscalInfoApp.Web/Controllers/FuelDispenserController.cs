@@ -5,16 +5,20 @@
     using FiscalInfoApp.Data.Common.Repositories;
     using FiscalInfoApp.Data.Models;
     using FiscalInfoApp.Services.Data.FuelDispenser;
+    using FiscalInfoApp.Services.Data.PetrolStation;
     using FiscalInfoApp.Web.ViewModels.FuelDispenser;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class FuelDispenserController : Controller
     {
         private readonly IFuelDispenserService fuelDispenserService;
+        private readonly IPetrolStationService petrolStationService;
         private readonly IDeletableEntityRepository<FuelDispenser> fuelDispenserRepository;
         private readonly IDeletableEntityRepository<PetrolStation> petrolStationRepository;
 
         public FuelDispenserController(
+            IPetrolStationService petrolStationService,
             IFuelDispenserService fuelDispenserService,
             IDeletableEntityRepository<FuelDispenser> fuelDispenserRepository,
             IDeletableEntityRepository<PetrolStation> petrolStationRepository)
@@ -22,9 +26,11 @@
             this.fuelDispenserService = fuelDispenserService;
             this.fuelDispenserRepository = fuelDispenserRepository;
             this.petrolStationRepository = petrolStationRepository;
+            this.petrolStationService = petrolStationService;
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult All(int id = 1)
         {
             const int ItemsPerPage = 12;
@@ -66,7 +72,7 @@
         public IActionResult Create()
         {
             var input = new CreateFuelDispenserInputModel();
-            input.PetrolStationItems = this.fuelDispenserService.GetPetrolStationsIdName();
+            input.PetrolStationItems = this.petrolStationService.GetPetrolStationsIdName();
 
             return this.View(input);
         }
@@ -76,7 +82,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                input.PetrolStationItems = this.fuelDispenserService.GetPetrolStationsIdName();
+                input.PetrolStationItems = this.petrolStationService.GetPetrolStationsIdName();
                 return this.View(input);
             }
 

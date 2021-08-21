@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using FiscalInfoApp.Web.ViewModels.FuelDispenser;
+    using FiscalInfoApp.Web.ViewModels.PetrolStation;
 
     using static FiscalInfoApp.Common.DataConstants.CommControllerConstants;
 
@@ -11,10 +11,12 @@
     {
         [Required]
         [MinLength(CommTypeMinLength)]
+        [MaxLength(CommTypeMaxLength)]
         public string CommType { get; set; }
 
         [Required]
         [MinLength(BoxColorMinLength)]
+        [MaxLength(BoxColorMaxLength)]
         public string BoxColour { get; set; }
 
         public bool IsConcentrator { get; set; }

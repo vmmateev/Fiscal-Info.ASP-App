@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using FiscalInfoApp.Web.ViewModels.FuelDispenser;
+    using FiscalInfoApp.Web.ViewModels.PetrolStation;
 
     using static FiscalInfoApp.Common.DataConstants.FuelTankConstants;
 
@@ -26,6 +26,7 @@
         public DateTime CalibrationDate { get; set; }
 
         [Required]
+        [MinLength(FuelTypeMinLength)]
         [MaxLength(FuelTypeMaxLength)]
         public string FuelType { get; set; }
 

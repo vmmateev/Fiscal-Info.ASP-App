@@ -1,6 +1,6 @@
 ﻿namespace FiscalInfoApp.Web.ViewModels.FuelDispenser
 {
-    public class PetrolStationViewModelDropDown
+    public class PetrolStationViewModelTESTDropDown
     {
         public int Id { get; set; }
 

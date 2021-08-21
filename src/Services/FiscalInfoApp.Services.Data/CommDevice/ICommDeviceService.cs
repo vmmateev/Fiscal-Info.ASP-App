@@ -11,7 +11,7 @@
     {
         public int GetAllCommDevicesCount();
 
-        public void SoftDeleteCommDevice(int id);
+        public Task SoftDeleteCommDevice(int id);
 
         public IEnumerable<CommDeviceInListViewModel> GetAllCommDevices(int page, int itemsPerPage);
 
