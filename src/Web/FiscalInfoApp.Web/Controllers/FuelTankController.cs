@@ -8,6 +8,7 @@
     using FiscalInfoApp.Services.Data.FuelTank;
     using FiscalInfoApp.Services.Data.PetrolStation;
     using FiscalInfoApp.Web.ViewModels.FuelTank;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class FuelTankController : BaseController
@@ -33,6 +34,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult All(int id = 1)
         {
             if (id < 1)
@@ -53,6 +55,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             var input = new CreateFuelTankInputModel();
@@ -62,6 +65,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(CreateFuelTankInputModel input)
         {
             if (!this.ModelState.IsValid)
@@ -77,6 +81,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -95,6 +100,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,6 +119,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             await this.fuelTankService.SoftDeleteFuelTank(id);

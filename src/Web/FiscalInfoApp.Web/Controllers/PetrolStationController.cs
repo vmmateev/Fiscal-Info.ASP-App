@@ -25,6 +25,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult All(int id = 1)
         {
             if (id < 1)
@@ -46,6 +47,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             var viewModel = new CreatePetrolStationInputModel();
@@ -70,6 +72,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Stats(int id = 1)
         {
             if (id < 1)

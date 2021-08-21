@@ -51,6 +51,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -69,6 +70,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             var input = new CreateFuelDispenserInputModel();
@@ -78,6 +80,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(CreateFuelDispenserInputModel input)
         {
             if (!this.ModelState.IsValid)
@@ -93,6 +96,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,6 +115,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             await this.fuelDispenserService.SoftDeleteFuelDispenserAsync(id);

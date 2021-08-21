@@ -16,6 +16,7 @@
             this.companyService = companyService;
         }
 
+        [HttpGet]
         [Authorize]
         public IActionResult Create()
         {
@@ -39,6 +40,8 @@
         }
 
         // Companies/All/1 2 3 4
+        [HttpGet]
+        [Authorize]
         public IActionResult All(int id = 1)
         {
             if (id < 1)
@@ -61,6 +64,8 @@
             return this.View(viewModel);
         }
 
+        [HttpGet]
+        [Authorize]
         public IActionResult Stats(int id = 1)
         {
             if (id < 1)

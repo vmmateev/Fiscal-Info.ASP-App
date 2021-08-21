@@ -8,6 +8,7 @@
     using FiscalInfoApp.Services.Data.FuelDispenser;
     using FiscalInfoApp.Services.Data.PetrolStation;
     using FiscalInfoApp.Web.ViewModels.CommDevice;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class CommDeviceController : BaseController
@@ -34,6 +35,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult All(int id = 1)
         {
             if (id < 1)
@@ -54,6 +56,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             var input = new CreateCommDeviceInputModel();
@@ -77,6 +80,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -95,6 +99,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,6 +118,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             await this.commDeviceService.SoftDeleteCommDevice(id);
