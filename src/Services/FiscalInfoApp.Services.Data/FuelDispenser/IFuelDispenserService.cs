@@ -16,9 +16,6 @@
 
         public Task CreateAsync(CreateFuelDispenserInputModel input);
 
-        // dropdown
-       // IEnumerable<PetrolStationViewModelDropDown> GetPetrolStationsIdName();
-
         Task SoftDeleteFuelDispenserAsync(int id);
 
         public bool FuelDispenserExists(int id);

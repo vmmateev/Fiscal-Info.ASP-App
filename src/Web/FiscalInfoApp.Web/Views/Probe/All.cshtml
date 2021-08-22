@@ -1,0 +1,46 @@
+﻿@model FiscalInfoApp.Web.ViewModels.Probe.ProbeListViewModel
+
+@{
+    ViewData["Title"] = "All Probes";
+}
+
+@if (this.TempData.ContainsKey("Message"))
+{
+    <div class="alert alert-success">@this.TempData["Message"]</div>
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Create New Probe</a>
+</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th><label>Probe length in [m]</label></th>
+                <th><label>Float size in [mm]</label></th>
+                <th><label>Fuel type</label></th>
+                <th><label>Petrol Station Name</label></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Probes)
+            {
+                <tr>
+                    <td>@item.ProbeLength m</td>
+                    <td>@item.FloatSize mm</td>
+                    <td>@item.FloatFuelType</td>
+                    <td>@item.PetrolStationName</td>
+                    <td>                        
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+<hr />
+
+<partial name="_PagingPartialAll.cshtml" model="@Model" />

@@ -73,6 +73,7 @@
                 input.PetrolStationItems = this.petrolStationService.GetPetrolStationsIdName();
                 return this.View(input);
             }
+
             await this.commDeviceService.CreateCommDeviceAsync(input);
             this.TempData["Message"] = "Communication controller created successfully.";
 

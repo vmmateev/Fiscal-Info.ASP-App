@@ -15,6 +15,7 @@
     using FiscalInfoApp.Services.Data.FuelTank;
     using FiscalInfoApp.Services.Data.Home;
     using FiscalInfoApp.Services.Data.PetrolStation;
+    using FiscalInfoApp.Services.Data.Probe;
     using FiscalInfoApp.Services.Mapping;
     using FiscalInfoApp.Services.Messaging;
     using FiscalInfoApp.Web.ViewModels;
@@ -77,6 +78,7 @@
             services.AddTransient<IFuelDispenserService, FuelDispenserService>();
             services.AddTransient<IFuelTankService, FuelTankService>();
             services.AddTransient<ICommDeviceService, CommDeviceService>();
+            services.AddTransient<IProbeService, ProbeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

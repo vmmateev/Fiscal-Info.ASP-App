@@ -1,0 +1,54 @@
+﻿@model FiscalInfoApp.Web.ViewModels.Probe.CreateProbeInputModel
+
+@{
+    ViewData["Title"] = "Create Probe";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Create probe and select accordingly Oil Level Model installed on corresponding Petrol station</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProbeLength" class="control-label"></label>
+                <input asp-for="ProbeLength" class="form-control" />
+                <span asp-validation-for="ProbeLength" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FloatSize" class="control-label"></label>
+                <input asp-for="FloatSize" class="form-control" />
+                <span asp-validation-for="FloatSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FloatFuelType" class="control-label"></label>
+                <input asp-for="FloatFuelType" class="form-control" />
+                <span asp-validation-for="FloatFuelType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TankNumber" class="control-label"></label>
+                <input asp-for="TankNumber" class="form-control" />
+                <span asp-validation-for="TankNumber" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <label asp-for="OilLevelId">Choose Petrol Station with the corresponding Oil Level</label>
+                <select asp-for="OilLevelId" class="form-control" style="width: 500px">
+                    @foreach (var oilLevel in Model.OilLevelItems)
+                    {   
+                        <option value="@oilLevel.Id">OilLevel Model: @oilLevel.Model <-> @oilLevel.PetrolStationName</option>
+                    }
+                </select>
+            </div>    
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="All">Back to List of Probes</a>
+</div>

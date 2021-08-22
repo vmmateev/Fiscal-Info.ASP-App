@@ -38,7 +38,7 @@
         public IEnumerable<CommDeviceInListViewModel> GetAllCommDevices(int page, int itemsPerPage)
         {
             var commDevices = this.commRepository.All()
-                .OrderBy(x => x.PetrolStationId)
+                .OrderByDescending(x => x.Id)
                 .Skip((page - 1) * itemsPerPage)
                 .Take(itemsPerPage)
                 .Select(x => new CommDeviceInListViewModel

@@ -41,7 +41,7 @@
         public IEnumerable<FuelTankInListViewModel> GetAllFuelTanks(int page, int itemsPerPage = 12)
         {
             var fuelTanks = this.fuelTankRepository.All()
-                .OrderBy(x => x.Id)
+                .OrderByDescending(x => x.Id)
                 .Skip((page - 1) * itemsPerPage)
                 .Take(itemsPerPage)
                 .Select(x => new FuelTankInListViewModel

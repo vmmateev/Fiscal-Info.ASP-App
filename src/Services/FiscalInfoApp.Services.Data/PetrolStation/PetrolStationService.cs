@@ -124,6 +124,8 @@
                 {
                     Id = x.Id,
                     Name = x.Name,
+                    OilLevelId = x.OilLevelId,
+                    OilLevelModel = x.OilLevel.Model,
                 })
                 .ToList();
 

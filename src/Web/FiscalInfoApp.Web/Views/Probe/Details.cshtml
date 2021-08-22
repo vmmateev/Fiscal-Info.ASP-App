@@ -1,0 +1,59 @@
+﻿@model FiscalInfoApp.Web.ViewModels.Probe.ProbeInListViewModel
+
+@{
+    ViewData["Title"] = "Probe Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Probe Details for Probe installed on @Model.PetrolStationName</h4>
+    <hr />
+    <table class="table table-striped col-md-6">
+        <thead>
+            <tr>
+                <th scope="col">Parameter Name</th>
+                <th scope="col">Parameter Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th><label>Probe Length in [cm]</label></th>
+                <td>@Model.ProbeLength</td>
+            </tr>
+            <tr>
+                <th><label>Float size in [mm]</label></th>
+                <td>@Model.FloatSize</td>
+            </tr>
+            <tr>
+                <th><label>Float fuel type</label></th>
+                <td>@Model.FloatFuelType</td>
+            </tr>
+            <tr>
+                <th><label>Tank number in the corresponding Petrol Station </label></th>
+                <td>@Model.TankNumber</td>
+            </tr>
+            <tr>
+                <th><label>Oil Level Model</label></th>
+                <td>@Model.OilLevelModel</td>
+            </tr>
+            <tr>
+                <th><label>Petrol Station Name</label></th>
+                <td>@Model.PetrolStationName</td>
+            </tr>
+            <tr>
+                <th><label>Petrol Station City</label></th>
+                <td>@Model.PetrolStationCity</td>
+            </tr>
+            <tr>
+                <th><label>Petrol Station Address</label></th>
+                <td>@Model.PetrolStationStreet</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <div class="col-md-4 align-self-center text-center">        
+        <a asp-action="All">Back to List of Probes</a>
+    </div>
+</div>

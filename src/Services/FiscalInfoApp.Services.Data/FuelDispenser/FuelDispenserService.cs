@@ -46,7 +46,7 @@
         public IEnumerable<FuelDispenserInListViewModel> GetAllFuelDispeners(int page, int itemsPerPage = 12)
         {
             var fuelDispensers = this.fuelDispenserRepository.AllAsNoTracking()
-                .OrderBy(x => x.Id)
+                .OrderByDescending(x => x.Id)
                 .Skip((page - 1) * itemsPerPage)
                 .Take(itemsPerPage)
                 .Select(x => new FuelDispenserInListViewModel
