@@ -1,9 +1,5 @@
 ﻿namespace FiscalInfoApp.Web.ViewModels.PetrolStation
 {
-    using System.Collections.Generic;
- 
-    using FiscalInfoApp.Web.ViewModels.Probe;
-
     public class PetrolStationViewModelDropDown
     {
         public int Id { get; set; }

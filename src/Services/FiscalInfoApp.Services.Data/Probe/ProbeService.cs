@@ -1,6 +1,5 @@
 ﻿namespace FiscalInfoApp.Services.Data.Probe
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -13,16 +12,13 @@
     public class ProbeService : IProbeService
     {
         private readonly IDeletableEntityRepository<Probe> probeRepository;
-        private readonly IDeletableEntityRepository<PetrolStation> petrolStationRepository;
         private readonly IDeletableEntityRepository<OilLevel> oilLevelRepository;
 
         public ProbeService(
             IDeletableEntityRepository<Probe> probeRepository,
-            IDeletableEntityRepository<PetrolStation> petrolStationRepository,
             IDeletableEntityRepository<OilLevel> oilLevelRepository)
         {
             this.probeRepository = probeRepository;
-            this.petrolStationRepository = petrolStationRepository;
             this.oilLevelRepository = oilLevelRepository;
         }
 
