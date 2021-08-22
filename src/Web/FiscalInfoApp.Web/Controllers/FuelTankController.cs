@@ -1,5 +1,6 @@
 ﻿namespace FiscalInfoApp.Web.Controllers
 {
+    using System;
     using System.Threading.Tasks;
 
     using FiscalInfoApp.Data.Common.Repositories;
@@ -60,6 +61,7 @@
         {
             var input = new CreateFuelTankInputModel();
             input.PetrolStationItems = this.petrolStationService.GetPetrolStationsIdName();
+            input.CalibrationDate = DateTime.UtcNow;
 
             return this.View(input);
         }

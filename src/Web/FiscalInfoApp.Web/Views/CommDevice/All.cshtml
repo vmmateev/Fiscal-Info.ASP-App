@@ -12,13 +12,13 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Create New Communication Controller</a>
+    <a asp-action="Create" class="btn btn-primary">Create New Communication Controller</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th><label>Communication Type</label></th>
-            <th><label>Controller box colour</label></th>
+            <th><label>Comm Type</label></th>
+            <th><label>Box colour</label></th>
             <th><label>Controller is a concentrator</label></th>
             <th><label>Name of Petrol Station Installed</label></th>
             <th><label>Location of Petrol Station</label></th>
@@ -35,7 +35,7 @@
                 <td>@item.PetrolStationName</td>
                 <td>@item.PetrolStationCity</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |                    
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>

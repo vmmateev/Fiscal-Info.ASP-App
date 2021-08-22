@@ -24,7 +24,7 @@
                     <partial name="_LoginPartial" />
                     <div class="navbar-nav flex-grow-1">
                         <div class="dropdown">
-                            <a asp-controller="Home" asp-action="Index" class="btn"><i class="fas fa-home"></i> Home</a>
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="btn"><i class="fas fa-home"></i> Home</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" asp-area="" asp-controller="Settings" asp-action="Index"> Settings</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy"> Privacy & Policy</a>
@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="dropdown">
-                                <a asp-controller="PetrolStation" asp-action="All" class="btn"><i class="fas fa-warehouse"></i> Petrol Stations</a>
+                                <a asp-area="" asp-controller="PetrolStation" asp-action="All" class="btn"><i class="fas fa-warehouse"></i> Petrol Stations</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" asp-area="" asp-controller="PetrolStation" asp-action="All"><i class="fas fa-list"></i> List All Petrol Stations</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="PetrolStation" asp-action="Create"><i class="fas fa-cog"></i> Add Petrol Station</a>
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="dropdown">
-                                <a asp-controller="FuelDispenser" asp-action="All" class="btn"><i class="fas fa-gas-pump"></i> Fuel Dispensers</a>
+                                <a asp-area="" asp-controller="FuelDispenser" asp-action="All" class="btn"><i class="fas fa-gas-pump"></i> Fuel Dispensers</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" asp-area="" asp-controller="FuelDispenser" asp-action="All"><i class="fas fa-list"></i> List All Fuel Dispensers</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="FuelDispenser" asp-action="Create"><i class="fas fa-cog"></i> Add Fuel Dispenser</a>
@@ -57,21 +57,21 @@
                             </div>
 
                             <div class="dropdown">
-                                <a asp-controller="FuelTank" asp-action="All" class="btn"><i class="fas fa-truck-moving"></i> Fuel Tanks</a>
+                                <a asp-area="" asp-controller="FuelTank" asp-action="All" class="btn"><i class="fas fa-truck-moving"></i> Fuel Tanks</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" asp-area="" asp-controller="FuelTank" asp-action="All"><i class="fas fa-list"></i> List All Fuel Tanks</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="FuelTank" asp-action="Create"><i class="fas fa-cog"></i> Add Fuel Tank</a>
                                 </div>
                             </div>
                             <div class="dropdown">
-                                <a asp-controller="CommDevice" asp-action="All" class="btn"><i class="fas fa-broadcast-tower"></i> Communication Controllers</a>
+                                <a asp-area="" asp-controller="CommDevice" asp-action="All" class="btn"><i class="fas fa-broadcast-tower"></i> Communication Controllers</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" asp-area="" asp-controller="CommDevice" asp-action="All"><i class="fas fa-list"></i> List All Communication Controllers</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="CommDevice" asp-action="Create"><i class="fas fa-cog"></i> Add Communication Controller</a>
                                 </div>
                             </div>
                             <div class="dropdown">
-                                <a asp-controller="Probe" asp-action="All" class="btn"><i class="fas fa-thermometer-half"></i> Oil level Probes</a>
+                                <a asp-area="" asp-controller="Probe" asp-action="All" class="btn"><i class="fas fa-thermometer-half"></i> Oil level Probes</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" asp-area="" asp-controller="Probe" asp-action="All"><i class="fas fa-list"></i> List All Probes</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="Probe" asp-action="Create"><i class="fas fa-cog"></i> Add Probe</a>
@@ -80,6 +80,15 @@
                         }
                     </div>
                 </div>
+                @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                {
+                    <div class="dropdown">
+                        <a asp-area="Administration" asp-controller="Companies" asp-action="Index" class="btn"><i class="fas fa-users-cog"></i> Admin Companies</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" asp-area="Administration" asp-controller="Companies" asp-action="Index"><i class="fas fa-list"></i> Admin Companies</a>                            
+                        </div>
+                    </div>
+                }
             </div>
         </nav>
     </header>

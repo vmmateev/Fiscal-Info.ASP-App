@@ -12,10 +12,6 @@
     public class CompanyService : ICompanyService
     {
         private readonly IDeletableEntityRepository<Company> companyRepository;
-        private readonly IDeletableEntityRepository<PetrolStation> petrolStationRepository;
-        private readonly IDeletableEntityRepository<OilLevel> oilLevelRepository;
-        private readonly IDeletableEntityRepository<CommController> commControllerRepository;
-        private readonly IDeletableEntityRepository<FuelDispenser> fuelDispenserRepository;
 
         public CompanyService(IDeletableEntityRepository<Company> companyRepository)
         {
