@@ -33,7 +33,7 @@
                         @if (this.User.Identity.IsAuthenticated)
                         {
                             <div class="dropdown">
-                                <a asp-controller="Company" asp-action="All" class="btn"><i class="fas fa-cog"></i> Companies</a>
+                                <a asp-area="" asp-controller="Company" asp-action="All" class="btn"><i class="fas fa-cog"></i> Companies</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" asp-area="" asp-controller="Company" asp-action="All"><i class="fas fa-list"></i> List Companies</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="Company" asp-action="Create"><i class="fas fa-cog"></i> Add Company</a>
@@ -92,7 +92,7 @@
     </div>
 
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted position-static">
 
         <div class="container">
             &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

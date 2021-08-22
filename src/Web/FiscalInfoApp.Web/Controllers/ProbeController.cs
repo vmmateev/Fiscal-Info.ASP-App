@@ -39,7 +39,7 @@
             {
                 return this.NotFound();
             }
-            const int ItemsPerPage = 6;
+            const int ItemsPerPage = 12;
 
             var viewModel = new ProbeListViewModel
             {
