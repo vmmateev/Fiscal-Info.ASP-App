@@ -60,6 +60,8 @@
                     PetrolStationId = x.PetrolStationId,
                     PetrolStationCity = x.PetrolStation.City,
                 })
+                .OrderByDescending(x => x.Id)
+                .ThenByDescending(x => x.PetrolStationId)
                 .ToList();
 
             return fuelDispensers;

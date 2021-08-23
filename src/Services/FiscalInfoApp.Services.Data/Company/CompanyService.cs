@@ -52,6 +52,7 @@
                 //    IsServiceOrganization = x.IsServiceOrganization.ToString().ToLower() == "true" ? "Yes" : "No",
                 //    PetrolStationsCount = x.PetrolStations.Count(),
                 //})
+                .OrderByDescending(x => x.Id)
                 .To<T>()
                 // .To<CompanyInListViewModel>()
                 .ToList();

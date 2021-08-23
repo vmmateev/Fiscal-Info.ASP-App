@@ -6,7 +6,7 @@
 
     using FiscalInfoApp.Data.Common.Repositories;
     using FiscalInfoApp.Data.Models;
-    
+
     using FiscalInfoApp.Web.ViewModels.PetrolStation;
 
     public class PetrolStationService : IPetrolStationService
@@ -104,7 +104,7 @@
                    SimCardId = x.FiscalPrinter.SimCard.Id,
                    GsmNumber = x.FiscalPrinter.SimCard.GsmNumber,
                })
-               .OrderBy(x => x.CompanyName)
+               .OrderByDescending(x => x.Id)
             .ToList();
 
             return petrolStations;

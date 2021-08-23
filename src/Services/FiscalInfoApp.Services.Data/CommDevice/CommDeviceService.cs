@@ -51,6 +51,8 @@
                     PetrolStationName = x.PetrolStation.Name,
                     PetrolStationCity = x.PetrolStation.City,
                 })
+                .OrderByDescending(x => x.Id)
+                .ThenByDescending(x => x.PetrolStationId)
                 .ToList();
 
             return commDevices;

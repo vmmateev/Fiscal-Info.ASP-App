@@ -40,7 +40,7 @@
         public IEnumerable<ProbeInListViewModel> GetAllProbes(int page, int itemsPerPage = 12)
         {
             var probes = this.probeRepository.All()
-                 .OrderBy(x => x.CreatedOn)
+                 .OrderByDescending(x => x.Id)
                  .Skip((page - 1) * itemsPerPage)
                  .Take(itemsPerPage)
                  .Select(x => new ProbeInListViewModel
@@ -57,7 +57,7 @@
                      PetrolStationCity = x.OilLevel.PetrolStation.City,
                      PetrolStationStreet = x.OilLevel.PetrolStation.Street,
                  })
-                 .OrderByDescending(x => x.PetrolStationName)
+                 .OrderByDescending(x => x.Id)
                  .ToList();
 
             return probes;
