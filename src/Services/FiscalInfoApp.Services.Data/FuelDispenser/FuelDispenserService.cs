@@ -92,19 +92,6 @@
             return fuelDispenser;
         }
 
-        //public IEnumerable<PetrolStationViewModelDropDown> GetPetrolStationsIdName()
-        //{
-        //    var viewModel = this.petrolStationRepository.AllAsNoTracking()
-        //        .Select(x => new PetrolStationViewModelDropDown
-        //        {
-        //            Id = x.Id,
-        //            Name = x.Name,
-        //        })
-        //        .ToList();
-
-        //    return viewModel;
-        //}
-
         public async Task SoftDeleteFuelDispenserAsync(int id)
         {
             var fuelDispenser = await this.fuelDispenserRepository.All()

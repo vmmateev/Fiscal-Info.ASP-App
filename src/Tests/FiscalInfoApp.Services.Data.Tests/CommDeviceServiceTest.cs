@@ -89,6 +89,7 @@ namespace FiscalInfoApp.Services.Data.Tests
 
             Assert.Equal(3, result);
         }
+
         [Fact]
         public void GetAllCommDevicesShouldReturnCorrectResult()
         {
