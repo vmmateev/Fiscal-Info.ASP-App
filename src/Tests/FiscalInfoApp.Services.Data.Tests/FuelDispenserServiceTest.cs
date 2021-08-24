@@ -95,6 +95,16 @@
 
             var service = new FuelDispenserService(fuelDispenserRepository, petrolStationRepository);
 
+            var petrolStation = new PetrolStation
+            {
+                Name = "tempo",
+                Street = "dunav",
+                City = "haskovo",
+                FiscalPrinterId = 1,
+                OilLevelId = 1,
+            };
+            db.PetrolStations.Add(petrolStation);
+
             var fuelDisp1 = new FuelDispenser
             {
                 Brand = "adast",
@@ -102,6 +112,7 @@
                 DispenserNumber = 1,
                 MidCertificate = "4550",
                 NozzleCount = 4,
+                PetrolStationId = 1,
             };
 
             var fuelDisp2 = new FuelDispenser
@@ -111,17 +122,17 @@
                 DispenserNumber = 4,
                 MidCertificate = "T10050",
                 NozzleCount = 2,
+                PetrolStationId = 1,
             };
 
             db.FuelDispensers.Add(fuelDisp1);
             db.FuelDispensers.Add(fuelDisp2);
             db.SaveChanges();
 
-            // TODO why null
             var result = service.GetAllFuelDispeners(1, 12);
             var fuel1 = result.Where(x => x.Brand == "adast").FirstOrDefault();
-            Assert.NotNull(result.Where(x => x.Id == 1));
-            Assert.NotNull(result.Where(x => x.Id == 2));
+
+            Assert.Equal("4550", fuel1.MidCertificate);
         }
 
         [Fact]
@@ -172,6 +183,16 @@
 
             var service = new FuelDispenserService(fuelDispenserRepository, petrolStationRepository);
 
+            var petrolStation = new PetrolStation
+            {
+                Name = "tempo",
+                Street = "dunav",
+                City = "haskovo",
+                FiscalPrinterId = 1,
+                OilLevelId = 1,
+            };
+            db.PetrolStations.Add(petrolStation);
+
             var fuelDisp1 = new FuelDispenser
             {
                 Id = 1,
@@ -180,6 +201,7 @@
                 DispenserNumber = 1,
                 MidCertificate = "4550",
                 NozzleCount = 4,
+                PetrolStationId = 1,
             };
 
             var fuelDisp2 = new FuelDispenser
@@ -190,18 +212,16 @@
                 DispenserNumber = 4,
                 MidCertificate = "T10050",
                 NozzleCount = 2,
+                PetrolStationId = 1,
             };
 
             await db.FuelDispensers.AddAsync(fuelDisp1);
             await db.FuelDispensers.AddAsync(fuelDisp2);
             await db.SaveChangesAsync();
 
-            // TODO Null Reference Exception ??
-            // Assert.Equal(fuelDisp1.Model, result.Model);
-
             var result = service.GetFuelDispenserById(1);
 
-            Assert.Null(result);
+            Assert.Equal(fuelDisp1.Model, result.Model);
         }
 
         [Fact]

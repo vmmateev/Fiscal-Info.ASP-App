@@ -1,7 +1,5 @@
-﻿
-namespace FiscalInfoApp.Services.Data.Tests
+﻿namespace FiscalInfoApp.Services.Data.Tests
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -44,7 +42,7 @@ namespace FiscalInfoApp.Services.Data.Tests
 
             await service.CreateCommDeviceAsync(input);
 
-            var expectedCommDevice = commRepository.All()//.CommControllers
+            var expectedCommDevice = commRepository.All()
                 .Where(x => x.CommType == "rs485")
                 .FirstOrDefault();
 
@@ -99,12 +97,23 @@ namespace FiscalInfoApp.Services.Data.Tests
             var petrolStationRepository = new EfDeletableEntityRepository<PetrolStation>(db);
 
             var service = new CommDeviceService(commRepository, petrolStationRepository);
+            var petrolStation = new PetrolStation
+            {
+                Name = "tempo",
+                Street = "dunav",
+                City = "haskovo",
+                FiscalPrinterId = 1,
+                OilLevelId = 1,
+            };
+            db.PetrolStations.Add(petrolStation);
+            db.SaveChanges();
 
             var comm1 = new CommController
             {
                 CommType = "rs232",
                 BoxColor = "white",
                 IsConcentrator = false,
+                PetrolStationId = 1,
             };
 
             var comm2 = new CommController
@@ -112,14 +121,17 @@ namespace FiscalInfoApp.Services.Data.Tests
                 CommType = "rs484",
                 BoxColor = "black",
                 IsConcentrator = false,
+                PetrolStationId = 1,
             };
+
             db.Add(comm1);
             db.Add(comm2);
+
             db.SaveChangesAsync();
 
             var result = service.GetAllCommDevices(1, 12);
-            Assert.NotNull(result.Where(x => x.Id == 1));
-            Assert.NotNull(result.Where(x => x.Id == 2));
+
+            Assert.Equal(2, result.Count());
         }
 
         [Fact]
@@ -167,7 +179,7 @@ namespace FiscalInfoApp.Services.Data.Tests
         }
 
         [Fact]
-        public void GetCommDeviceByIdShouldReturnNotNull()
+        public void GetCommDeviceByIdShouldReturnCorrectCommDevice()
         {
             ApplicationDbContext db = GetDb();
 
@@ -176,19 +188,30 @@ namespace FiscalInfoApp.Services.Data.Tests
 
             var service = new CommDeviceService(commRepo, petrolRepo);
 
+            var petrolStation1 = new PetrolStation
+            {
+                Name = "benzinostanciq propan",
+                City = "plovdiv",
+                Street = "carigradsko",
+                CompanyId = 3,
+            };
+
+            db.PetrolStations.Add(petrolStation1);
+            db.SaveChanges();
+
             var input1 = new CommController
             {
                 CommType = "rs232",
                 BoxColor = "white",
                 IsConcentrator = false,
+                PetrolStationId = 1,
             };
 
             db.CommControllers.Add(input1);
             db.SaveChanges();
 
-            var result = service.GetCommDeviceById(null);
-
-            Assert.Null(result);
+            var result = service.GetCommDeviceById(1);
+            Assert.Equal("white", result.BoxColour);
         }
     }
 }
