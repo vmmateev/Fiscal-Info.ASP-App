@@ -5,7 +5,7 @@ This is my project for SoftUni - C# ASP.NET Course module.(June 2021)
 <br/><br/>
 
 ## 🏷️ Project Description
-✔️	**Fiscal-App Info** is a application for storage data from fiscal printers and devices installed arround the petrol stations.<br />
+✔️	**Fiscal-App Info** is a application for storage data from fiscal printers and devices installed around the petrol stations.<br />
 <br />
 ✔️	The application requires a simple registration process with email and password.<br />
 <br />
