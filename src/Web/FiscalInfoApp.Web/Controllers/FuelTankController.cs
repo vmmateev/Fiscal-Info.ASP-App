@@ -12,6 +12,9 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    using static FiscalInfoApp.Common.MessageConstant;
+    using static FiscalInfoApp.Common.PagingConstants;
+
     public class FuelTankController : BaseController
     {
         private readonly IDeletableEntityRepository<FuelTank> fuelTanksRepository;
@@ -36,20 +39,19 @@
 
         [HttpGet]
         [Authorize]
-        public IActionResult All(int id = 1)
+        public IActionResult All(int id = StartingPage)
         {
             if (id < 1)
             {
                 return this.NotFound();
             }
 
-            const int ItemsPerPage = 12;
             var viewModel = new FuelTankListViewModel
             {
                 PageNumber = id,
-                ItemsPerPage = ItemsPerPage,
+                ItemsPerPage = Items12PerPage,
                 ItemsCount = this.fuelTankService.GetAllFuelTanksCount(),
-                FuelTanks = this.fuelTankService.GetAllFuelTanks(id, ItemsPerPage),
+                FuelTanks = this.fuelTankService.GetAllFuelTanks(id, Items12PerPage),
             };
 
             return this.View(viewModel);
@@ -77,7 +79,7 @@
             }
 
             await this.fuelTankService.CreateFuelTankAsync(input);
-            this.TempData["Message"] = "Fuel Tank created successfully.";
+            this.TempData["Message"] = FuelTankCreateMsg;
 
             return this.RedirectToAction(nameof(this.All));
         }
@@ -126,7 +128,7 @@
         {
             await this.fuelTankService.SoftDeleteFuelTank(id);
 
-            this.TempData["Message"] = "Fuel tank deleted successfully";
+            this.TempData["Message"] = FuelTankDeletionMsg;
 
             return this.RedirectToAction(nameof(this.All));
         }

@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+
     using FiscalInfoApp.Data.Common.Models;
 
     using static FiscalInfoApp.Common.DataConstants.CompanyConstants;

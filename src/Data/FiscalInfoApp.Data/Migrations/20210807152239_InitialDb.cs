@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace FiscalInfoApp.Data.Migrations
+﻿namespace FiscalInfoApp.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class InitialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

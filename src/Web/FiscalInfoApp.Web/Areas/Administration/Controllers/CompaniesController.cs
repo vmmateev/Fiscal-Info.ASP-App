@@ -22,13 +22,11 @@
             this.companyRepository = companyRepository;
         }
 
-        // GET: Administration/Companies
         public async Task<IActionResult> Index()
         {
-            return this.View(await companyRepository.AllWithDeleted().ToListAsync());
+            return this.View(await this.companyRepository.AllWithDeleted().ToListAsync());
         }
 
-        // GET: Administration/Companies/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -77,7 +75,7 @@
                 return this.NotFound();
             }
 
-            var company =  this.companyRepository.AllWithDeleted().FirstOrDefault(x => x.Id == id);
+            var company = this.companyRepository.AllWithDeleted().FirstOrDefault(x => x.Id == id);
             if (company == null)
             {
                 return this.NotFound();
@@ -147,7 +145,7 @@
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var company =  this.companyRepository.AllWithDeleted().FirstOrDefault(x => x.Id == id);
+            var company = this.companyRepository.AllWithDeleted().FirstOrDefault(x => x.Id == id);
             this.companyRepository.Delete(company);
             await this.companyRepository.SaveChangesAsync();
             return this.RedirectToAction(nameof(this.Index));

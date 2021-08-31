@@ -11,7 +11,6 @@
     using static FiscalInfoApp.Common.DataConstants.ProbeConstants;
 
     public class CreateProbeInputModel
-
     {
         [Required]
         [DisplayName("Probe Length in [m]")]

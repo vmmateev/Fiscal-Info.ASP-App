@@ -10,7 +10,10 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    public class FuelDispenserController : Controller
+    using static FiscalInfoApp.Common.MessageConstant;
+    using static FiscalInfoApp.Common.PagingConstants;
+
+    public class FuelDispenserController : BaseController
     {
         private readonly IFuelDispenserService fuelDispenserService;
         private readonly IPetrolStationService petrolStationService;
@@ -31,9 +34,8 @@
 
         [HttpGet]
         [Authorize]
-        public IActionResult All(int id = 1)
+        public IActionResult All(int id = StartingPage)
         {
-            const int ItemsPerPage = 12;
             if (id < 1)
             {
                 return this.NotFound();
@@ -42,9 +44,9 @@
             var viewModel = new FuelDispenserListViewModel
             {
                 PageNumber = id,
-                ItemsPerPage = ItemsPerPage,
+                ItemsPerPage = Items12PerPage,
                 ItemsCount = this.fuelDispenserService.GetAllFuelDispensersCount(),
-                FuelDispensers = this.fuelDispenserService.GetAllFuelDispeners(id, ItemsPerPage),
+                FuelDispensers = this.fuelDispenserService.GetAllFuelDispeners(id, Items12PerPage),
             };
 
             return this.View(viewModel);
@@ -90,7 +92,7 @@
             }
 
             await this.fuelDispenserService.CreateAsync(input);
-            this.TempData["Message"] = "Fuel Dispenser created successfully.";
+            this.TempData["Message"] = FuelDispenserCreateMsg;
 
             return this.RedirectToAction(nameof(this.All));
         }
@@ -120,7 +122,7 @@
         {
             await this.fuelDispenserService.SoftDeleteFuelDispenserAsync(id);
 
-            this.TempData["Message"] = "Fuel dispenser deleted successfully";
+            this.TempData["Message"] = FuelDispenserDeletionMsg;
 
             return this.RedirectToAction(nameof(this.All));
         }

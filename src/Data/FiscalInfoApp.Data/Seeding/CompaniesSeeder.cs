@@ -19,7 +19,7 @@
             await dbContext.Companies.AddAsync(new Company { Name = "АМК-2002 ООД", City = "с.Опан", Street = "Околовръстен път" });
             await dbContext.Companies.AddAsync(new Company { Name = "Темпо-ММ ООД", City = "Хасково", Street = "ул.Дунав 23" });
             await dbContext.Companies.AddAsync(new Company { Name = "Хаджията 2 ЕООД", City = "Пловдив", Street = "ул.Димитър Талев 101" });
-            await dbContext.Companies.AddAsync(new Company { Name = "Стил-96 ООД", City = "Кърджали", Street = "бул.Васил Априлов 23"});
+            await dbContext.Companies.AddAsync(new Company { Name = "Стил-96 ООД", City = "Кърджали", Street = "бул.Васил Априлов 23" });
 
             await dbContext.SaveChangesAsync();
         }

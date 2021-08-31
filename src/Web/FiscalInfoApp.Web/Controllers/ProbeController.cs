@@ -1,9 +1,7 @@
 ﻿namespace FiscalInfoApp.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
+
     using FiscalInfoApp.Data.Common.Repositories;
     using FiscalInfoApp.Data.Models;
     using FiscalInfoApp.Services.Data.PetrolStation;
@@ -11,6 +9,9 @@
     using FiscalInfoApp.Web.ViewModels.Probe;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
+    using static FiscalInfoApp.Common.MessageConstant;
+    using static FiscalInfoApp.Common.PagingConstants;
 
     public class ProbeController : BaseController
     {
@@ -33,20 +34,19 @@
 
         [HttpGet]
         [Authorize]
-        public IActionResult All(int id = 1)
+        public IActionResult All(int id = StartingPage)
         {
             if (id < 1)
             {
                 return this.NotFound();
             }
-            const int ItemsPerPage = 12;
 
             var viewModel = new ProbeListViewModel
             {
                 PageNumber = id,
-                ItemsPerPage = ItemsPerPage,
+                ItemsPerPage = Items12PerPage,
                 ItemsCount = this.probeService.GetAllProbesCount(),
-                Probes = this.probeService.GetAllProbes(id, ItemsPerPage),
+                Probes = this.probeService.GetAllProbes(id, Items12PerPage),
             };
 
             return this.View(viewModel);
@@ -96,11 +96,10 @@
             }
 
             await this.probeService.CreateAsync(input);
-            this.TempData["Message"] = "Probe created successfully.";
+            this.TempData["Message"] = ProbeCreateMsg;
 
             return this.RedirectToAction(nameof(this.All));
         }
-
 
         [HttpGet]
         [Authorize]
@@ -127,7 +126,7 @@
         {
             await this.probeService.SoftDeleteProbe(id);
 
-            this.TempData["Message"] = "Probe deleted successfully.";
+            this.TempData["Message"] = ProbeDeletionMsg;
 
             return this.RedirectToAction(nameof(this.All));
         }

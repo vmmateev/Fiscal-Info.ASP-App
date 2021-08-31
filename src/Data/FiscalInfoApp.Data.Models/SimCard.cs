@@ -10,11 +10,11 @@
     public class SimCard : BaseDeletableModel<int>
     {
         [Required]
-        [MaxLength(SimCardImsiLength)] //123456789012345
+        [MaxLength(SimCardImsiLength)] // 123456789012345
         public string Imsi { get; set; }
 
         [Required]
-        [MaxLength(GsmNumberLength)] //359123123456
+        [MaxLength(GsmNumberLength)] // 359123123456
         public string GsmNumber { get; set; }
 
         [Required]

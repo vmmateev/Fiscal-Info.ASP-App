@@ -1,12 +1,13 @@
-﻿using FiscalInfoApp.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FiscalInfoApp.Data.Seeding
+﻿namespace FiscalInfoApp.Data.Seeding
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using FiscalInfoApp.Data.Models;
+
     public class CommentsSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)

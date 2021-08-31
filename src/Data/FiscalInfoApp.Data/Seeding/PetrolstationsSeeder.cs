@@ -20,7 +20,7 @@
                 Name = "Бензиностанция ОПАН",
                 City = "с.Опан",
                 Street = "Околовръстен път",
-                CompanyId = 2, //AMK
+                CompanyId = 2, // AMK
                 FiscalPrinterId = 1,
                 OilLevelId = 1,
             });
@@ -31,7 +31,7 @@
                 Name = "Бензиностанция Петрол",
                 City = "Хасково",
                 Street = "ул.Дунав 23",
-                CompanyId = 3, //Темпо
+                CompanyId = 3, // Темпо
                 FiscalPrinterId = 2,
                 OilLevelId = 2,
             });
@@ -42,7 +42,7 @@
                 Name = "Бензиностанция Хаджията Талев",
                 City = "Пловдив",
                 Street = "ул.Димитър Талев 101",
-                CompanyId = 4, //Хаджията Талев
+                CompanyId = 4, // Хаджията Талев
                 FiscalPrinterId = 3,
                 OilLevelId = 3,
             });
@@ -53,7 +53,7 @@
                 Name = "Бензиностанция Хаджията Ландос",
                 City = "Пловдив",
                 Street = "ул.Ландос 2",
-                CompanyId = 4, //Хаджията Ландос
+                CompanyId = 4, // Хаджията Ландос
                 FiscalPrinterId = 4,
                 OilLevelId = 4,
             });
@@ -64,7 +64,7 @@
                 Name = "Бензиностанция Мора",
                 City = "Кърджали",
                 Street = "бул.Васил Априлов 23",
-                CompanyId = 5, //Стил-96 Мора
+                CompanyId = 5, // Стил-96 Мора
                 FiscalPrinterId = 5,
                 OilLevelId = 5,
             });
@@ -75,7 +75,7 @@
                 Name = "Бензиностанция Гледка",
                 City = "Кърджали",
                 Street = "кв.Гледка 30",
-                CompanyId = 5, //Стил-96 Гледка
+                CompanyId = 5, // Стил-96 Гледка
                 FiscalPrinterId = 6,
                 OilLevelId = 6,
             });

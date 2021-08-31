@@ -11,6 +11,9 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    using static FiscalInfoApp.Common.MessageConstant;
+    using static FiscalInfoApp.Common.PagingConstants;
+
     public class CommDeviceController : BaseController
     {
         private readonly IDeletableEntityRepository<PetrolStation> petrolStationRepository;
@@ -24,8 +27,7 @@
             IDeletableEntityRepository<CommController> commRepository,
             IDeletableEntityRepository<PetrolStation> petrolStationRepository,
             IPetrolStationService petrolStationService,
-            IFuelDispenserService fuelDispenser
-            )
+            IFuelDispenserService fuelDispenser)
         {
             this.petrolStationRepository = petrolStationRepository;
             this.petrolStationService = petrolStationService;
@@ -36,20 +38,19 @@
 
         [HttpGet]
         [Authorize]
-        public IActionResult All(int id = 1)
+        public IActionResult All(int id = StartingPage)
         {
             if (id < 1)
             {
                 return this.NotFound();
             }
-            const int ItemsPerPage = 12;
 
             var viewModel = new ComDeviceListViewModel
             {
                 PageNumber = id,
-                ItemsPerPage = ItemsPerPage,
+                ItemsPerPage = Items12PerPage,
                 ItemsCount = this.commDeviceService.GetAllCommDevicesCount(),
-                CommDevices = this.commDeviceService.GetAllCommDevices(id, ItemsPerPage),
+                CommDevices = this.commDeviceService.GetAllCommDevices(id, Items12PerPage),
             };
 
             return this.View(viewModel);
@@ -75,7 +76,7 @@
             }
 
             await this.commDeviceService.CreateCommDeviceAsync(input);
-            this.TempData["Message"] = "Communication controller created successfully.";
+            this.TempData["Message"] = CommCreationMsg;
 
             return this.RedirectToAction(nameof(this.All));
         }
@@ -124,7 +125,7 @@
         {
             await this.commDeviceService.SoftDeleteCommDevice(id);
 
-            this.TempData["Message"] = "Communication controller deleted successfully";
+            this.TempData["Message"] = CommDeletionMsg;
 
             return this.RedirectToAction(nameof(this.All));
         }

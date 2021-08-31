@@ -15,37 +15,37 @@
                 return;
             }
 
-            await dbContext.OilLevels.AddAsync(new OilLevel //Opan
+            await dbContext.OilLevels.AddAsync(new OilLevel // Opan
             {
                 Brand = "Veeder-Root",
                 Model = "TLS 2",
             });
 
-            await dbContext.OilLevels.AddAsync(new OilLevel //tempo
+            await dbContext.OilLevels.AddAsync(new OilLevel // tempo
             {
                 Brand = "Petrovend",
                 Model = "SiteSentinel 1",
             });
 
-            await dbContext.OilLevels.AddAsync(new OilLevel //hadjiqta talev
+            await dbContext.OilLevels.AddAsync(new OilLevel // hadjiqta talev
             {
                 Brand = "Veeder-Root",
                 Model = "TLS 2P",
             });
 
-            await dbContext.OilLevels.AddAsync(new OilLevel //hadjiqta landos
+            await dbContext.OilLevels.AddAsync(new OilLevel // hadjiqta landos
             {
                 Brand = "Veeder-Root",
                 Model = "TLS 350",
             });
 
-            await dbContext.OilLevels.AddAsync(new OilLevel //stil96 mora
+            await dbContext.OilLevels.AddAsync(new OilLevel // stil96 mora
             {
                 Brand = "Fafnir",
                 Model = "Visy-x GUI",
             });
 
-            await dbContext.OilLevels.AddAsync(new OilLevel //stil96 gledka
+            await dbContext.OilLevels.AddAsync(new OilLevel // stil96 gledka
             {
                 Brand = "Fafnir",
                 Model = "Visy-x No GUI",

@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace FiscalInfoApp.Data.Migrations
+﻿namespace FiscalInfoApp.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddedCompanyLinkinPetrolStation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

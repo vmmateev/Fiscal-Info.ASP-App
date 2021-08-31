@@ -34,10 +34,8 @@ namespace FiscalInfoApp.Data.Models
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
 
-        //TODO add petrolstation collection before or after scaffold
-        
-        //TODO add link to entity Company
+        // TODO add petrolstation collection before or after scaffold
 
-        //TODO Добави ServiceOrganization & Name след Scaffold
+        // TODO add link to entity Company
     }
 }

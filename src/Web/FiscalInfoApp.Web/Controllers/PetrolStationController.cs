@@ -1,15 +1,15 @@
 ﻿namespace FiscalInfoApp.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
+
     using FiscalInfoApp.Services.Data.Company;
     using FiscalInfoApp.Services.Data.PetrolStation;
-    using FiscalInfoApp.Web.ViewModels.Company;
     using FiscalInfoApp.Web.ViewModels.PetrolStation;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
+    using static FiscalInfoApp.Common.MessageConstant;
+    using static FiscalInfoApp.Common.PagingConstants;
 
     public class PetrolStationController : BaseController
     {
@@ -26,21 +26,19 @@
 
         [HttpGet]
         [Authorize]
-        public IActionResult All(int id = 1)
+        public IActionResult All(int id = StartingPage)
         {
             if (id < 1)
             {
                 return this.NotFound();
             }
 
-            const int ItemsPerPage = 12;
-
             var viewModel = new PetrolStationListViewModel
             {
                 PageNumber = id,
-                ItemsPerPage = ItemsPerPage,
+                ItemsPerPage = Items12PerPage,
                 ItemsCount = this.petrolStationService.GetPetrolStationsCount(),
-                PetrolStations = this.petrolStationService.GetAllPetrolStations(id, ItemsPerPage),
+                PetrolStations = this.petrolStationService.GetAllPetrolStations(id, Items12PerPage),
             };
 
             return this.View(viewModel);
@@ -67,27 +65,26 @@
             }
 
             await this.petrolStationService.CreatePetrolStationAsync(input);
-            this.TempData["Message"] = "Petrol Station added successfully.";
-            return this.RedirectToAction("All");
+            this.TempData["Message"] = PetrolStationCreateMsg;
+
+            return this.RedirectToAction(nameof(this.All));
         }
 
         [HttpGet]
         [Authorize]
-        public IActionResult Stats(int id = 1)
+        public IActionResult Stats(int id = StartingPage)
         {
             if (id < 1)
             {
                 return this.NotFound();
             }
 
-            const int ItemsPerPage = 12;
-
             var viewModel = new PetrolStationListViewModel
             {
                 PageNumber = id,
-                ItemsPerPage = ItemsPerPage,
+                ItemsPerPage = Items12PerPage,
                 ItemsCount = this.petrolStationService.GetPetrolStationsCount(),
-                PetrolStations = this.petrolStationService.GetAllPetrolStations(id, ItemsPerPage),
+                PetrolStations = this.petrolStationService.GetAllPetrolStations(id, Items12PerPage),
             };
 
             return this.View(viewModel);

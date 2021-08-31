@@ -7,7 +7,10 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    public class CompanyController : Controller
+    using static FiscalInfoApp.Common.MessageConstant;
+    using static FiscalInfoApp.Common.PagingConstants;
+
+    public class CompanyController : BaseController
     {
         private readonly ICompanyService companyService;
 
@@ -33,30 +36,26 @@
             }
 
             await this.companyService.CreateCompanyAsync(input);
-            this.TempData["Message"] = "Company added successfully.";
+            this.TempData["Message"] = CompanyCreateMsg;
 
-            // TODO redirect to Company All page
             return this.Redirect("/Company/All");
         }
 
-        // Companies/All/1 2 3 4
         [HttpGet]
         [Authorize]
-        public IActionResult All(int id = 1)
+        public IActionResult All(int id = StartingPage)
         {
             if (id < 1)
             {
                 return this.NotFound();
             }
 
-            const int ItemsPerPage = 12;
-
             var viewModel = new CompanyListViewModel
             {
                 PageNumber = id,
-                ItemsPerPage = ItemsPerPage,
+                ItemsPerPage = Items12PerPage,
                 ItemsCount = this.companyService.GetCompaniesCount(),
-                Companies = this.companyService.GetAllCompanies<CompanyInListViewModel>(id, ItemsPerPage), // For IMapper T Template Class viewModel
+                Companies = this.companyService.GetAllCompanies<CompanyInListViewModel>(id, Items12PerPage), // For IMapper T Template Class viewModel
 
                 // Companies = this.companyService.GetAllCompanies(id, 12),
             };
@@ -66,20 +65,19 @@
 
         [HttpGet]
         [Authorize]
-        public IActionResult Stats(int id = 1)
+        public IActionResult Stats(int id = StartingPage)
         {
             if (id < 1)
             {
                 return this.NotFound();
             }
-            const int ItemsPerPage = 12;
 
             var viewModel = new CompanyStatsViewModel
             {
                 PageNumber = id,
-                ItemsPerPage = ItemsPerPage,
+                ItemsPerPage = Items12PerPage,
                 ItemsCount = this.companyService.GetCompaniesCount(),
-                Companies = this.companyService.GetAllStatsCompanies(id, ItemsPerPage),
+                Companies = this.companyService.GetAllStatsCompanies(id, Items12PerPage),
             };
 
             return this.View(viewModel);

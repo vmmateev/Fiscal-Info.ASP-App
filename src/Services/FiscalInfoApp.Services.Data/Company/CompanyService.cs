@@ -38,22 +38,23 @@
             // 1-12 - page1 - skip 0 (page-1) * itemsPerPage = 0-1 * 12 = 0
             // 13-24 - page 2 - skip 12 (page-1) * itemsPerPage = 0-1 * 12 = 0
             // 25-36 - page 3 - skip 24
-
             var companies = this.companyRepository.AllAsNoTracking()
                 .OrderByDescending(x => x.Id)
                 .Skip((page - 1) * itemsPerPage)
                 .Take(itemsPerPage)
-                //.Select(x => new CompanyInListViewModel
-                //{
+
+                // .Select(x => new CompanyInListViewModel
+                // {
                 //    Id = x.Id,
                 //    Name = x.Name,
                 //    City = x.City,
                 //    Street = x.Street,
                 //    IsServiceOrganization = x.IsServiceOrganization.ToString().ToLower() == "true" ? "Yes" : "No",
                 //    PetrolStationsCount = x.PetrolStations.Count(),
-                //})
+                // })
                 .OrderByDescending(x => x.Id)
                 .To<T>()
+
                 // .To<CompanyInListViewModel>()
                 .ToList();
 
@@ -88,7 +89,6 @@
                 .Take(itemPerPage)
                 .Select(company => new CompanyInStatsViewModel
                 {
-
                     CompanyId = company.Id,
                     CompanyName = company.Name,
                     PetrolStationsCount = company.PetrolStations.Count(),
