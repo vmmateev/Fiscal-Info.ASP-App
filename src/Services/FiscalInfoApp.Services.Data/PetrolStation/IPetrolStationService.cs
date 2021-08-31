@@ -14,5 +14,7 @@
         IEnumerable<PetrolStationInListViewModel> GetAllPetrolStations(int page, int itemsPerPage = 12);
 
         public IEnumerable<PetrolStationViewModelDropDown> GetPetrolStationsIdName();
+
+        public PetrolStationInListViewModel GetPetrolStationById(int? id);
     }
 }

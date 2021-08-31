@@ -92,5 +92,24 @@
 
             return this.View(viewModel);
         }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return this.NotFound();
+            }
+
+            var petrolStation = this.petrolStationService.GetPetrolStationById(id);
+
+            if (petrolStation == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(petrolStation);
+        }
     }
 }
